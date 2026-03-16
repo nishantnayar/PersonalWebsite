@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
+import { profile } from "@/content/profile";
 
 type Props = { params: { slug: string } };
 
@@ -12,9 +13,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
+
+  const url = `/blog/${params.slug}`;
+  const ogImages = profile.ogImage
+    ? [{ url: profile.ogImage, width: 1200, height: 630, alt: post.title }]
+    : [];
+
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: url },
+    authors: [{ name: profile.name }],
+    openGraph: {
+      title: `${post.title} | ${profile.name}`,
+      description: post.excerpt,
+      url,
+      type: "article",
+      publishedTime: new Date(post.date).toISOString(),
+      authors: [profile.name],
+      tags: post.tags,
+      images: ogImages,
+    },
   };
 }
 

@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { profile } from "@/content/profile";
+
+export const metadata: Metadata = {
+  title: `${profile.name} — ${profile.title}`,
+  description: profile.tagline,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: `${profile.name} — ${profile.title}`,
+    description: profile.tagline,
+    url: "/",
+    type: "profile",
+    firstName: profile.name.split(" ")[0],
+    lastName: profile.name.split(" ").slice(1).join(" "),
+  },
+};
 
 // ── Social icon components ────────────────────────────────────
 function GithubIcon() {

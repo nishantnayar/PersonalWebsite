@@ -4,8 +4,8 @@
 
 export const profile = {
   // --- Basic Info ---
-  name: "Alex Johnson",
-  title: "Full-Stack Developer & Designer",
+  name: "Nishant Nayar",
+  title: "Lead Solutions Analyst",
   tagline: "I build thoughtful digital products that people love to use.",
 
   // --- Bio (shown on the About page) ---
@@ -24,7 +24,7 @@ film photography, or obsessing over a good cup of coffee.`,
   avatarUrl: null as string | null,
 
   // --- Location ---
-  location: "San Francisco, CA",
+  location: "Chicago, IL",
 
   // --- Skills (shown as tags on About page) ---
   skills: [
@@ -41,14 +41,24 @@ film photography, or obsessing over a good cup of coffee.`,
   // --- Social / Contact Links ---
   // Set a link to null to hide it.
   social: {
-    email: "hello@alexjohnson.dev",
-    github: "https://github.com/alexjohnson",
-    linkedin: "https://linkedin.com/in/alexjohnson",
-    twitter: "https://twitter.com/alexjohnson",
+    email: "nishant.nayar@hotmail.com",
+    github: "https://github.com/nishantnayar",
+    linkedin: "https://www.linkedin.com/in/nishantnayar/",
+    twitter: null,
     // Add more as needed: dribbble, youtube, etc.
   },
 
   // --- Resume / CV ---
   // Place your resume PDF in /public/ and update the path, or set to null to hide.
   resumeUrl: "/resume.pdf" as string | null,
+
+  // --- SEO ---
+  // Your live site URL — update this once you have your Vercel or custom domain.
+  // This is required for Open Graph links to work correctly on LinkedIn / Twitter.
+  siteUrl: "https://nishantnayar.dev",
+
+  // Open Graph / social share image.
+  // Place a 1200×630px image at /public/og-image.png and set the path below.
+  // If null, social shares will show a text-only card.
+  ogImage: "/og-image.png" as string | null,
 };

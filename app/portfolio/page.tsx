@@ -2,9 +2,18 @@ import type { Metadata } from "next";
 import { projects } from "@/content/portfolio";
 import { profile } from "@/content/profile";
 
+const description = `A selection of projects designed and built by ${profile.name}, ${profile.title}.`;
+
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: `Projects and work by ${profile.name}`,
+  description,
+  alternates: { canonical: "/portfolio" },
+  openGraph: {
+    title: `Portfolio | ${profile.name}`,
+    description,
+    url: "/portfolio",
+    type: "website",
+  },
 };
 
 function ExternalLinkIcon() {

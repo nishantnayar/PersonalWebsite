@@ -3,9 +3,18 @@ import Link from "next/link";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import { profile } from "@/content/profile";
 
+const description = `Writing by ${profile.name} on code, design, and building things on the internet.`;
+
 export const metadata: Metadata = {
   title: "Blog",
-  description: `Writing by ${profile.name} on code, design, and craft.`,
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: `Blog | ${profile.name}`,
+    description,
+    url: "/blog",
+    type: "website",
+  },
 };
 
 export default function BlogPage() {
