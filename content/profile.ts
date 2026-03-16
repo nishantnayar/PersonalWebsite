@@ -45,7 +45,7 @@ film photography, or obsessing over a good cup of coffee.`,
 
   // --- Resume / CV ---
   // Place your resume PDF in /public/ and update the path, or set to null to hide.
-  resumeUrl: "/resume.pdf" as string | null,
+  resumeUrl: null as string | null,
 
   // --- SEO ---
   // Your live site URL — update this once you have your Vercel or custom domain.
@@ -55,5 +55,5 @@ film photography, or obsessing over a good cup of coffee.`,
   // Open Graph / social share image.
   // Place a 1200×630px image at /public/og-image.png and set the path below.
   // If null, social shares will show a text-only card.
-  ogImage: "/og-image.png" as string | null,
+  ogImage: null as string | null,
 };
