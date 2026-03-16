@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Sidebar from "@/components/Sidebar";
 import { profile } from "@/content/profile";
 
 const inter = Inter({
@@ -16,23 +15,14 @@ const ogImages = profile.ogImage
   : [];
 
 export const metadata: Metadata = {
-  // ── Titles ────────────────────────────────────────────────────
   title: {
     default: `${profile.name} — ${profile.title}`,
     template: `%s | ${profile.name}`,
   },
   description: profile.tagline,
-
-  // ── Canonical base URL (required for absolute OG URLs) ────────
   metadataBase: new URL(profile.siteUrl),
-
-  // ── Robots ────────────────────────────────────────────────────
   robots: { index: true, follow: true },
-
-  // ── Authorship ────────────────────────────────────────────────
   authors: [{ name: profile.name }],
-
-  // ── Open Graph (LinkedIn, Facebook, iMessage, Slack…) ─────────
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -42,7 +32,6 @@ export const metadata: Metadata = {
     description: profile.tagline,
     images: ogImages,
   },
-
 };
 
 export default function RootLayout({
@@ -52,10 +41,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="bg-white">
+        <Sidebar />
+        {/* Offset content by sidebar width on desktop; add top padding on mobile for hamburger */}
+        <div className="lg:pl-64 min-h-screen flex flex-col">
+          <main className="flex-1 pt-16 lg:pt-0">{children}</main>
+        </div>
       </body>
     </html>
   );
