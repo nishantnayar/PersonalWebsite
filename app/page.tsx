@@ -142,7 +142,7 @@ export default function AboutPage() {
                 alt={name}
                 width={192}
                 height={192}
-                className="object-cover w-full h-full"
+                className="object-cover object-top w-full h-full"
                 priority
               />
             ) : (

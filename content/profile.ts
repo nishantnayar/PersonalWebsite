@@ -21,21 +21,16 @@ film photography, or obsessing over a good cup of coffee.`,
   // Place your photo in /public/images/ and update the path below.
   // Example: "/images/photo.jpg"
   // To use no photo, set to null.
-  avatarUrl: null as string | null,
+  avatarUrl: "/images/photo.jpg",
 
   // --- Location ---
   location: "Chicago, IL",
 
   // --- Skills (shown as tags on About page) ---
   skills: [
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
+    "Python",
+    "SQL",
     "PostgreSQL",
-    "Tailwind CSS",
-    "Figma",
-    "AWS",
   ],
 
   // --- Social / Contact Links ---
