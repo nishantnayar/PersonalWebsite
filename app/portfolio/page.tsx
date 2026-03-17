@@ -62,7 +62,8 @@ export default function PortfolioPage() {
       {/* Featured projects */}
       {featured.length > 0 && (
         <section className="mb-10">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
             Featured
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -103,7 +104,7 @@ export default function PortfolioPage() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
+                        className="px-2 py-0.5 bg-accent/5 border border-accent/20 text-accent rounded-md text-xs font-medium"
                       >
                         {tag}
                       </span>
@@ -143,7 +144,8 @@ export default function PortfolioPage() {
       {/* Other projects */}
       {rest.length > 0 && (
         <section>
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
             Other Projects
           </h2>
           <div className="grid md:grid-cols-2 gap-4">

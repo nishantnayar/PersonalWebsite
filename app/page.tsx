@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="flex flex-wrap gap-3">
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors shadow-sm shadow-accent/25"
           >
             View My Work
           </Link>
@@ -59,11 +59,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="border-t border-gray-100 mb-16" />
+      <div className="mb-16 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
       {/* ── Bio ──────────────────────────────────────────────── */}
       <section className="mb-16">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+        <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
           About Me
         </h2>
         <div className="space-y-4 max-w-2xl">
@@ -78,14 +79,15 @@ export default function AboutPage() {
       {/* ── Skills ───────────────────────────────────────────── */}
       {skills.length > 0 && (
         <section className="mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
             Skills & Technologies
           </h2>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium"
+                className="px-3 py-1.5 bg-accent/5 border border-accent/20 text-accent rounded-lg text-sm font-medium"
               >
                 {skill}
               </span>

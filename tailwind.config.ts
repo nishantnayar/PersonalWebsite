@@ -12,8 +12,8 @@ const config: Config = {
       },
       colors: {
         accent: {
-          DEFAULT: "#6366f1", // indigo-500
-          hover: "#4f46e5",   // indigo-600
+          DEFAULT: "#2563eb", // blue-600
+          hover: "#1d4ed8",   // blue-700
         },
       },
       typography: {
@@ -21,7 +21,7 @@ const config: Config = {
           css: {
             maxWidth: "none",
             color: "#374151",
-            a: { color: "#6366f1", "&:hover": { color: "#4f46e5" } },
+            a: { color: "#2563eb", "&:hover": { color: "#1d4ed8" } },
           },
         },
       },

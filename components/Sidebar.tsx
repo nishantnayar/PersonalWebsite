@@ -115,10 +115,10 @@ function SidebarContent({ onNavClick }: { onNavClick?: () => void }) {
               key={href}
               href={href}
               onClick={onNavClick}
-              className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-accent/10 text-accent"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  ? "bg-accent/10 text-accent border-l-2 border-accent pl-[10px] pr-3"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-3"
               }`}
             >
               {label}
@@ -163,7 +163,7 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop: fixed sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-64 flex-col border-r border-gray-100 bg-white z-40 overflow-y-auto">
+      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-64 flex-col border-r border-gray-100 border-t-4 border-t-accent bg-white z-40 overflow-y-auto">
         <SidebarContent />
       </aside>
 
