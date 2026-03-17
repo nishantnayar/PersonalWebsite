@@ -57,6 +57,7 @@ He holds a Masters in Analytics from University of Chicago and an MBA (Finance) 
     email: "nishant.nayar@hotmail.com",
     github: "https://github.com/nishantnayar",
     linkedin: "https://www.linkedin.com/in/nishantnayar/",
+    medium: "https://medium.com/@nishant-nayar",
     twitter: null,
     // Add more as needed: dribbble, youtube, etc.
   },
