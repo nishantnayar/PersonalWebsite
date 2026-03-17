@@ -37,6 +37,28 @@ He holds a Masters in Analytics from University of Chicago and an MBA (Finance) 
   // --- Location ---
   location: "Chicago, IL",
 
+  // --- Education ---
+  // logoUrl: place a square logo image in /public/images/ and set the path (e.g. "/images/uchicago.png")
+  // color: used as the badge background when no logo is provided
+  education: [
+    {
+      degree: "Master of Science in Analytics",
+      institution: "University of Chicago",
+      location: "Chicago, IL",
+      logoUrl: "/images/uchicago.png",
+      color: "#800000",          // UChicago Maroon
+      abbreviation: "UChicago",
+    },
+    {
+      degree: "MBA — Finance",
+      institution: "Punjabi University",
+      location: "Patiala, India",
+      logoUrl: "/images/PU.jpg",
+      color: "#1e3a8a",
+      abbreviation: "PU",
+    },
+  ],
+
   // --- Skills (shown as tags on About page) ---
   skills: [
     "Python",

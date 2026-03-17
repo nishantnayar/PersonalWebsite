@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { name, tagline, bio, skills, social, resumeUrl, stats, currently } = profile;
+  const { name, tagline, bio, skills, social, resumeUrl, stats, currently, education } = profile;
   const paragraphs = bio.split("\n\n").map((p) => p.trim()).filter(Boolean);
 
   return (
@@ -93,6 +94,55 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      {/* ── Education ────────────────────────────────────────── */}
+      {education && education.length > 0 && (
+        <section className="mb-16">
+          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
+            Education
+          </h2>
+          <div className="space-y-4">
+            {education.map((ed) => (
+              <div
+                key={ed.institution}
+                className="flex items-center gap-5 p-5 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all"
+              >
+                {/* Logo or color badge */}
+                <div
+                  className="relative flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center shadow-sm"
+                  style={{ backgroundColor: ed.logoUrl ? "transparent" : ed.color }}
+                >
+                  {ed.logoUrl ? (
+                    <Image
+                      src={ed.logoUrl}
+                      alt={ed.institution}
+                      fill
+                      className="object-contain p-1"
+                      sizes="56px"
+                    />
+                  ) : (
+                    <span className="text-white font-bold text-xs tracking-tight text-center px-1 leading-tight">
+                      {ed.abbreviation}
+                    </span>
+                  )}
+                </div>
+
+                {/* Degree details */}
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-900 leading-snug">{ed.degree}</p>
+                  <p className="text-sm font-medium mt-0.5" style={{ color: ed.color }}>
+                    {ed.institution}
+                  </p>
+                  {ed.location && (
+                    <p className="text-xs text-gray-400 mt-0.5">{ed.location}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Skills ───────────────────────────────────────────── */}
       {skills.length > 0 && (
