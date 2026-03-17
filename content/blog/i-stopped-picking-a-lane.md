@@ -1,6 +1,6 @@
 ---
 title: I Stopped Picking a Lane — And That's the Point
-date: 2025-03-01
+date: 2026-03-01
 excerpt: I have two degrees that don't usually show up together — an MBA in Finance and a Master's in Analytics from UChicago. Most people hear that and ask which one I actually am.
 tags: [Career, Data Strategy, Financial Services]
 ---
