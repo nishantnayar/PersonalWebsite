@@ -49,13 +49,23 @@ export default function PortfolioPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+      {/* Coming soon banner */}
+      <div className="mb-10 flex items-start gap-3 px-5 py-4 rounded-xl bg-amber-50 border border-amber-100 text-amber-800">
+        <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5 text-amber-400">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm0 7.5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5z" clipRule="evenodd" />
+        </svg>
+        <p className="text-sm leading-relaxed">
+          <span className="font-semibold">Projects in progress.</span>{" "}
+          These are actively being built — write-ups, code, and demos will be linked here as they're completed.
+        </p>
+      </div>
+
       {/* Header */}
       <div className="mb-14">
         <p className="text-sm font-medium text-accent uppercase tracking-widest mb-3">Work</p>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Portfolio</h1>
         <p className="text-lg text-gray-500 max-w-xl">
-          A selection of projects I&apos;ve designed, built, and shipped. From side projects to
-          production apps.
+          A selection of projects at the intersection of data, AI, and financial services.
         </p>
       </div>
 
