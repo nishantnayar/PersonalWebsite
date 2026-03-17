@@ -50,7 +50,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const raw = fs.readFileSync(filepath, "utf8");
   const { data, content } = matter(raw);
 
-  const processed = await remark().use(remarkHtml).process(content);
+  const processed = await remark().use(remarkHtml, { sanitize: false }).process(content);
   const contentHtml = processed.toString();
 
   return {
