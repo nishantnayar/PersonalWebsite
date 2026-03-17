@@ -18,6 +18,12 @@ export type Post = PostMeta & {
   contentHtml: string;
 };
 
+/** Normalize a date value from gray-matter (may be a Date object or string) to YYYY-MM-DD. */
+function normalizeDate(raw: unknown): string {
+  if (raw instanceof Date) return raw.toISOString().split("T")[0];
+  return String(raw);
+}
+
 /** Return all post metadata, sorted newest first. */
 export function getAllPosts(): PostMeta[] {
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md"));
@@ -30,7 +36,7 @@ export function getAllPosts(): PostMeta[] {
     return {
       slug,
       title: data.title as string,
-      date: data.date as string,
+      date: normalizeDate(data.date),
       excerpt: data.excerpt as string,
       tags: (data.tags as string[]) ?? [],
     };
@@ -56,7 +62,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   return {
     slug,
     title: data.title as string,
-    date: data.date as string,
+    date: normalizeDate(data.date),
     excerpt: data.excerpt as string,
     tags: (data.tags as string[]) ?? [],
     contentHtml,
