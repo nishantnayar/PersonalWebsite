@@ -65,7 +65,7 @@ function CloseIcon() {
 // ── Sidebar content ───────────────────────────────────────────
 function SidebarContent({ onNavClick }: { onNavClick?: () => void }) {
   const pathname = usePathname();
-  const { name, title, location, avatarUrl, social } = profile;
+  const { name, title, location, avatarUrl, social, currently } = profile;
   const year = new Date().getFullYear();
 
   const socialLinks = [
@@ -78,7 +78,7 @@ function SidebarContent({ onNavClick }: { onNavClick?: () => void }) {
     <div className="flex flex-col h-full py-8 px-6">
       {/* Profile */}
       <div className="mb-8">
-        <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 to-violet-100 mb-4 ring-2 ring-white shadow-sm">
+        <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-sky-100 mb-4 ring-2 ring-accent/30 shadow-sm shadow-accent/10">
           {avatarUrl ? (
             <Image
               src={avatarUrl}
@@ -145,6 +145,19 @@ function SidebarContent({ onNavClick }: { onNavClick?: () => void }) {
               {label}
             </a>
           ))}
+        </div>
+      )}
+
+      {/* Currently */}
+      {currently && (
+        <div className="mt-6 pt-5 border-t border-gray-100 px-3">
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-300">
+              Currently
+            </p>
+          </div>
+          <p className="text-xs text-gray-500 leading-relaxed">{currently}</p>
         </div>
       )}
 

@@ -6,16 +6,27 @@ export const profile = {
   // --- Basic Info ---
   name: "Nishant Nayar",
   title: "Lead Solutions Analyst",
-  tagline: "I build thoughtful digital products that people love to use.",
+  tagline: "Turning complex data into decisions that matter.",
 
   // --- Bio (shown on the About page) ---
   // Use \n\n to create paragraph breaks
-  bio: `I'm a full-stack developer with 5 years of experience building web applications
-for startups and growing companies. I care deeply about clean code, great user
-experience, and shipping products that make a real difference.
+  bio: `Nishant is a passionate data management professional with a proven track record of developing and executing strategic initiatives within Investment Bank, Commercial Bank and Asset Management segments of the financial services. He excels at translating complex data challenges into actionable solutions by leveraging data governance best practices and applied data science techniques. Additionally, he is a critical thinker and a problem solver, brings a strong work ethic and a commitment to data-driven decision making.
 
-When I'm not coding, you'll find me hiking mountain trails, experimenting with
-film photography, or obsessing over a good cup of coffee.`,
+He is passionate about Explainable & Generative AI, data analytics, mentoring and giving back to the community.
+
+He holds a Masters in Analytics from University of Chicago and an MBA (Finance) from Punjabi University, India.`,
+
+  // --- Stats (3–4 highlights shown below the hero) ---
+  // Edit values and labels freely; set to [] to hide the strip
+  stats: [
+    { value: "10+", label: "Years Experience" },
+    { value: "3",   label: "Banking Sectors" },
+    { value: "M.S.", label: "Analytics · UChicago" },
+  ],
+
+  // --- Currently (shown in sidebar — what you're focused on right now) ---
+  // Set to null to hide
+  currently: "Exploring Explainable & Generative AI in financial services" as string | null,
 
   // --- Profile photo ---
   // Place your photo in /public/images/ and update the path below.
@@ -31,6 +42,13 @@ film photography, or obsessing over a good cup of coffee.`,
     "Python",
     "SQL",
     "PostgreSQL",
+    "Data Governance",
+    "Data Science",
+    "Machine Learning",
+    "Generative AI",
+    "Business Intelligence",
+    "Financial Services",
+    "Data Analytics",
   ],
 
   // --- Social / Contact Links ---

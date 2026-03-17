@@ -17,21 +17,24 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { name, tagline, bio, skills, social, resumeUrl } = profile;
+  const { name, tagline, bio, skills, social, resumeUrl, stats, currently } = profile;
   const paragraphs = bio.split("\n\n").map((p) => p.trim()).filter(Boolean);
 
   return (
     <div className="max-w-3xl mx-auto px-8 md:px-12 py-16 md:py-20">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="mb-16">
+      <section className="mb-16 relative">
+        {/* Subtle background glow */}
+        <div className="absolute -top-8 -right-8 w-72 h-72 bg-accent/5 rounded-full blur-3xl pointer-events-none -z-10" />
+
         <p className="text-sm font-medium text-accent uppercase tracking-widest mb-4">
           Hello, I&apos;m {name.split(" ")[0]}
         </p>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
           {tagline}
         </h1>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 mb-10">
           <Link
             href="/portfolio"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors shadow-sm shadow-accent/25"
@@ -57,6 +60,21 @@ export default function AboutPage() {
             </a>
           )}
         </div>
+
+        {/* Stats strip */}
+        {stats && stats.length > 0 && (
+          <div className="grid grid-cols-3 gap-3">
+            {stats.map(({ value, label }) => (
+              <div
+                key={label}
+                className="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center"
+              >
+                <p className="text-xl font-bold text-gray-900">{value}</p>
+                <p className="text-xs text-gray-500 mt-0.5 leading-snug">{label}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <div className="mb-16 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
@@ -100,7 +118,7 @@ export default function AboutPage() {
       <div className="grid sm:grid-cols-2 gap-4">
         <Link
           href="/portfolio"
-          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 transition-all"
+          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 hover:shadow-sm transition-all"
         >
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Explore</p>
           <p className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
@@ -110,13 +128,13 @@ export default function AboutPage() {
         </Link>
         <Link
           href="/blog"
-          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 transition-all"
+          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 hover:shadow-sm transition-all"
         >
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Read</p>
           <p className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
             Blog →
           </p>
-          <p className="text-sm text-gray-500 mt-1">Writing on code, design, and craft</p>
+          <p className="text-sm text-gray-500 mt-1">Writing on data, AI, and craft</p>
         </Link>
       </div>
 
