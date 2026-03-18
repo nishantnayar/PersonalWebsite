@@ -9,6 +9,26 @@ export type MediumPost = {
   url: string;
 };
 
+// Manual excerpt overrides — keyed by lowercase title substring for resilience
+const excerptOverrides: Record<string, string> = {
+  "beyond correlation and cointegration":
+    "Most pairs trading strategies stop at correlation. This piece explores how neural networks identify co-movement patterns that traditional cointegration tests miss.",
+  "automate stock analysis with prefect":
+    "A practical walkthrough of building an automated financial data pipeline — from ingesting price data to triggering analysis workflows on a schedule.",
+  "time series forecasting models":
+    "End-to-end guide to building a forecasting model with Prophet, tracking experiments with MLflow, and deploying as a Streamlit app.",
+  "ai books":
+    "A reading list of the books that shaped how I think about AI — from technical foundations to the business and ethics of building intelligent systems.",
+};
+
+function getExcerptOverride(title: string): string | null {
+  const lower = title.toLowerCase();
+  for (const [key, value] of Object.entries(excerptOverrides)) {
+    if (lower.includes(key)) return value;
+  }
+  return null;
+}
+
 /** Fetch and parse the Medium RSS feed for the profile's Medium account. */
 export async function getMediumPosts(): Promise<MediumPost[]> {
   const mediumUrl = profile.social.medium;
@@ -30,6 +50,9 @@ export async function getMediumPosts(): Promise<MediumPost[]> {
         ? new Date(item.pubDate).toISOString().split("T")[0]
         : "",
       excerpt: (() => {
+        const title = item.title ?? "";
+        const override = getExcerptOverride(title);
+        if (override) return override;
         const raw = (item.content ?? item.contentSnippet ?? "");
         const text = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
         return text.length > 0
