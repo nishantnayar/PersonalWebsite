@@ -79,6 +79,34 @@ export default function AboutPage() {
             ))}
           </div>
         )}
+
+        {/* CTA strip */}
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 px-5 py-4 rounded-xl bg-accent/5 border border-accent/15">
+          <p className="flex-1 text-sm text-gray-600 leading-relaxed">
+            <span className="font-semibold text-gray-900">Open to conversations</span>{" "}
+            about data strategy, program delivery, and XAI in financial services.
+          </p>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {social.linkedin && (
+              <a
+                href={social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
+              >
+                Connect on LinkedIn
+              </a>
+            )}
+            {social.email && (
+              <a
+                href={`mailto:${social.email}`}
+                className="inline-flex items-center gap-1.5 px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-gray-300 hover:bg-white transition-colors"
+              >
+                Email
+              </a>
+            )}
+          </div>
+        </div>
       </section>
 
       <div className="mb-16 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />

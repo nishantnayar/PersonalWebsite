@@ -121,8 +121,8 @@ export default function PortfolioPage() {
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm0 7.5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5z" clipRule="evenodd" />
         </svg>
         <p className="text-sm leading-relaxed">
-          <span className="font-semibold">Projects in progress.</span>{" "}
-          These are actively being built — write-ups, code, and demos will be linked here as they're completed.
+          <span className="font-semibold">Actively building</span>{" "}
+          — Credit Risk XAI model and RAG Financial Document Q&amp;A in progress. GitHub repos and write-ups will be linked here as each project ships.
         </p>
       </div>
 
