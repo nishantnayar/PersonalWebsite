@@ -33,7 +33,73 @@ function GithubIcon() {
   );
 }
 
-// Gradient backgrounds for project image placeholders
+// Domain-specific SVG visuals — one per project, in order
+function ProjectPlaceholder({ index }: { index: number }) {
+  if (index === 0) return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <path d="M40 8L62 20V44C62 58 52 68 40 73C28 68 18 58 18 44V20Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5"/>
+      <path d="M24 57A18 18 0 1 1 56 57" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeOpacity="0.35" fill="none"/>
+      <path d="M24 57A18 18 0 0 1 50 33" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+      <circle cx="40" cy="57" r="3" fill="white"/>
+      <line x1="40" y1="54" x2="50" y2="34" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  );
+  if (index === 1) return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <rect x="14" y="14" width="34" height="44" rx="3" fill="white" fillOpacity="0.15" stroke="white" strokeWidth="1.5"/>
+      <rect x="20" y="18" width="34" height="44" rx="3" fill="white" fillOpacity="0.1" stroke="white" strokeWidth="1.5"/>
+      <line x1="22" y1="30" x2="38" y2="30" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="22" y1="37" x2="38" y2="37" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="22" y1="44" x2="31" y2="44" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="56" cy="56" r="8" stroke="white" strokeWidth="2" fill="none"/>
+      <line x1="62" y1="62" x2="68" y2="68" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+    </svg>
+  );
+  if (index === 2) return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <rect x="10" y="12" width="50" height="36" rx="7" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5"/>
+      <path d="M18 48L10 62L26 54" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M20 32L30 22L40 29L52 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      <circle cx="52" cy="16" r="3" fill="white"/>
+    </svg>
+  );
+  if (index === 3) return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <rect x="13" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.9"/>
+      <rect x="32" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.5"/>
+      <rect x="51" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.3"/>
+      <rect x="13" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.6"/>
+      <rect x="32" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.9"/>
+      <rect x="51" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.4"/>
+      <rect x="13" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.4"/>
+      <rect x="32" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.7"/>
+      <rect x="51" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.95"/>
+    </svg>
+  );
+  if (index === 4) return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <line x1="16" y1="12" x2="16" y2="66" stroke="white" strokeWidth="1.5" strokeOpacity="0.4"/>
+      <rect x="18" y="18" width="38" height="9" rx="2" fill="white" fillOpacity="0.9"/>
+      <rect x="18" y="33" width="28" height="9" rx="2" fill="white" fillOpacity="0.7"/>
+      <rect x="18" y="48" width="18" height="9" rx="2" fill="white" fillOpacity="0.5"/>
+      <circle cx="56" cy="22" r="5" fill="white" fillOpacity="0.3" stroke="white" strokeWidth="1.5"/>
+      <path d="M53 22.5L55.5 25L59 20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+  return (
+    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
+      <path d="M6 55C11 55 13 25 22 25C31 25 31 55 40 55C49 55 49 38 58 38C67 38 67 46 74 46"
+            stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+      <line x1="31" y1="16" x2="31" y2="64" stroke="white" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.45"/>
+      <line x1="58" y1="16" x2="58" y2="64" stroke="white" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.45"/>
+      <rect x="6" y="66" width="25" height="4" rx="1" fill="white" fillOpacity="0.35"/>
+      <rect x="31" y="66" width="27" height="4" rx="1" fill="white" fillOpacity="0.65"/>
+      <rect x="58" y="66" width="16" height="4" rx="1" fill="white" fillOpacity="0.45"/>
+    </svg>
+  );
+}
+
+// Gradient backgrounds for project cards
 const gradients = [
   "from-indigo-100 to-violet-100",
   "from-sky-100 to-cyan-100",
@@ -94,9 +160,7 @@ export default function PortfolioPage() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="text-4xl font-bold text-white/50 select-none">
-                      {project.title.charAt(0)}
-                    </span>
+                    <ProjectPlaceholder index={i} />
                   )}
                 </div>
 

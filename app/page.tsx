@@ -32,9 +32,12 @@ export default function AboutPage() {
         <p className="text-sm font-medium text-accent uppercase tracking-widest mb-4">
           Hello, I&apos;m {name.split(" ")[0]}
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
           {tagline}
         </h1>
+        <p className="text-base text-gray-500 leading-relaxed mb-8">
+          Lead Solutions Analyst &amp; Technical Program Manager · Data Science · Financial Services · Writing about the gap between tech and business.
+        </p>
         <div className="flex flex-wrap gap-3 mb-10">
           <Link
             href="/portfolio"

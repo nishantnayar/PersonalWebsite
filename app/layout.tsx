@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { profile } from "@/content/profile";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <div className="lg:pl-64 min-h-screen flex flex-col">
           <main className="flex-1 pt-16 lg:pt-0">{children}</main>
         </div>
+        <Analytics />
       </body>
     </html>
   );

@@ -5,28 +5,32 @@
 export const profile = {
   // --- Basic Info ---
   name: "Nishant Nayar",
-  title: "Lead Solutions Analyst",
+  title: "Data Science · Program Delivery · Finance",
   tagline: "Turning complex data into decisions that matter.",
 
   // --- Bio (shown on the About page) ---
   // Use \n\n to create paragraph breaks
-  bio: `Nishant is a passionate data management professional with a proven track record of developing and executing strategic initiatives within Investment Bank, Commercial Bank and Asset Management segments of the financial services. He excels at translating complex data challenges into actionable solutions by leveraging data governance best practices and applied data science techniques. Additionally, he is a critical thinker and a problem solver, brings a strong work ethic and a commitment to data-driven decision making.
+  bio: `Nishant works at the intersection of data, technology, and business — a place where most professionals pick one lane. He didn't.
 
-He is passionate about Explainable & Generative AI, data analytics, mentoring and giving back to the community.
+Over the past decade, he's built his career across the financial services industry — investment banking, commercial banking, and asset management — translating complex data problems into decisions that actually get made. As a Lead Solutions Analyst and Technical Program Manager, his job is to bridge the gap between what the data says and what the business needs to hear.
 
-He holds a Masters in Analytics from University of Chicago and an MBA (Finance) from Punjabi University, India.`,
+He holds a Master's in Analytics from the University of Chicago and an MBA in Finance from Punjabi University. The combination isn't accidental — it reflects how he thinks: rigorously on the data side, clearly on the business side.
+
+He's particularly drawn to Explainable AI and Generative AI — not as buzzwords, but as tools that, used well, make data science something organizations can actually trust and act on.
+
+Outside of work, he mentors early-career professionals navigating the same crossroads he once stood at: enough technical depth to be credible, enough business sense to be useful.`,
 
   // --- Stats (3–4 highlights shown below the hero) ---
   // Edit values and labels freely; set to [] to hide the strip
   stats: [
     { value: "10+", label: "Years Experience" },
-    { value: "3",   label: "Banking Sectors" },
+    { value: "MBA + M.S.", label: "Two Advanced Degrees" },
     { value: "M.S.", label: "Analytics · UChicago" },
   ],
 
   // --- Currently (shown in sidebar — what you're focused on right now) ---
   // Set to null to hide
-  currently: "Exploring Explainable & Generative AI in financial services" as string | null,
+  currently: "Building a TFT forecasting model with XAI interpretability stack · Speaking at DataFest Northwestern · Writing on LinkedIn about the gap between data and decisions" as string | null,
 
   // --- Profile photo ---
   // Place your photo in /public/images/ and update the path below.
