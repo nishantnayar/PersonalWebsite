@@ -14,6 +14,8 @@ export const profile = {
 
 Over the past decade, he's built his career across the financial services industry — investment banking, commercial banking, and asset management — translating complex data problems into decisions that actually get made. As a Lead Solutions Analyst and Technical Program Manager, his job is to bridge the gap between what the data says and what the business needs to hear.
 
+That career has taken him across four continents — from Bangalore and Tokyo to London, New York, Boston, and now Chicago — working across the global footprint of financial services institutions.
+
 He holds a Master's in Analytics from the University of Chicago and an MBA in Finance from Punjabi University. The combination isn't accidental — it reflects how he thinks: rigorously on the data side, clearly on the business side.
 
 He's particularly drawn to Explainable AI and Generative AI — not as buzzwords, but as tools that, used well, make data science something organizations can actually trust and act on.
@@ -26,6 +28,7 @@ Outside of work, he mentors early-career professionals navigating the same cross
     { value: "10+", label: "Years Experience" },
     { value: "MBA + M.S.", label: "Two Advanced Degrees" },
     { value: "M.S.", label: "Analytics · UChicago" },
+    { value: "6 Cities", label: "Global Experience" },
   ],
 
   // --- Currently (shown in sidebar — what you're focused on right now) ---

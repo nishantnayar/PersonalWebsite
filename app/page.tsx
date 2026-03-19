@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { profile } from "@/content/profile";
+import WorldMapWrapper from "@/components/WorldMapWrapper";
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.title}`,
@@ -67,7 +68,7 @@ export default function AboutPage() {
 
         {/* Stats strip */}
         {stats && stats.length > 0 && (
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {stats.map(({ value, label }) => (
               <div
                 key={label}
@@ -124,6 +125,18 @@ export default function AboutPage() {
             </p>
           ))}
         </div>
+      </section>
+
+      {/* ── Global Footprint ─────────────────────────────────── */}
+      <section className="mb-16">
+        <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
+          Global Footprint
+        </h2>
+        <p className="text-sm text-gray-500 mb-5">
+          Six cities across four continents — hover a pin to see the work.
+        </p>
+        <WorldMapWrapper />
       </section>
 
       {/* ── Education ────────────────────────────────────────── */}
