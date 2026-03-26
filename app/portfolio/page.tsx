@@ -33,89 +33,86 @@ function GithubIcon() {
   );
 }
 
-// Domain-specific SVG visuals — one per project, in order
-function ProjectPlaceholder({ index }: { index: number }) {
+const cardStyle = {
+  headerBg: "from-slate-800 to-slate-900",
+  iconBg: "bg-white/10",
+  tag: "bg-accent/5 text-accent border-accent/20",
+};
+
+function ProjectIcon({ index }: { index: number }) {
   if (index === 0) return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <path d="M40 8L62 20V44C62 58 52 68 40 73C28 68 18 58 18 44V20Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5"/>
-      <path d="M24 57A18 18 0 1 1 56 57" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeOpacity="0.35" fill="none"/>
-      <path d="M24 57A18 18 0 0 1 50 33" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-      <circle cx="40" cy="57" r="3" fill="white"/>
-      <line x1="40" y1="54" x2="50" y2="34" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7z"/>
+      <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+      <line x1="12" y1="16" x2="15" y2="10"/>
     </svg>
   );
   if (index === 1) return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <rect x="14" y="14" width="34" height="44" rx="3" fill="white" fillOpacity="0.15" stroke="white" strokeWidth="1.5"/>
-      <rect x="20" y="18" width="34" height="44" rx="3" fill="white" fillOpacity="0.1" stroke="white" strokeWidth="1.5"/>
-      <line x1="22" y1="30" x2="38" y2="30" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="22" y1="37" x2="38" y2="37" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="22" y1="44" x2="31" y2="44" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="56" cy="56" r="8" stroke="white" strokeWidth="2" fill="none"/>
-      <line x1="62" y1="62" x2="68" y2="68" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <rect x="4" y="4" width="10" height="13" rx="1.5"/>
+      <rect x="6" y="6" width="10" height="13" rx="1.5" strokeOpacity={0.5}/>
+      <line x1="7" y1="9" x2="12" y2="9"/>
+      <line x1="7" y1="12" x2="12" y2="12"/>
+      <circle cx="17" cy="17" r="3"/>
+      <line x1="19.5" y1="19.5" x2="22" y2="22"/>
     </svg>
   );
   if (index === 2) return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <rect x="10" y="12" width="50" height="36" rx="7" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5"/>
-      <path d="M18 48L10 62L26 54" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
-      <path d="M20 32L30 22L40 29L52 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-      <circle cx="52" cy="16" r="3" fill="white"/>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <rect x="2" y="4" width="16" height="11" rx="2"/>
+      <path d="M5 20l3-5H2z" fill="currentColor" stroke="none" opacity={0.7}/>
+      <path d="M6 9.5l3-3 3 2 4-4"/>
+      <circle cx="16" cy="4.5" r="1.2" fill="currentColor" stroke="none"/>
     </svg>
   );
   if (index === 3) return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <rect x="13" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.9"/>
-      <rect x="32" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.5"/>
-      <rect x="51" y="13" width="15" height="15" rx="2" fill="white" fillOpacity="0.3"/>
-      <rect x="13" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.6"/>
-      <rect x="32" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.9"/>
-      <rect x="51" y="32" width="15" height="15" rx="2" fill="white" fillOpacity="0.4"/>
-      <rect x="13" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.4"/>
-      <rect x="32" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.7"/>
-      <rect x="51" y="51" width="15" height="15" rx="2" fill="white" fillOpacity="0.95"/>
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+      <rect x="3" y="3" width="5" height="5" rx="1" fill="white" fillOpacity={0.9}/>
+      <rect x="10" y="3" width="5" height="5" rx="1" fill="white" fillOpacity={0.5}/>
+      <rect x="17" y="3" width="5" height="5" rx="1" fill="white" fillOpacity={0.25}/>
+      <rect x="3" y="10" width="5" height="5" rx="1" fill="white" fillOpacity={0.55}/>
+      <rect x="10" y="10" width="5" height="5" rx="1" fill="white" fillOpacity={0.9}/>
+      <rect x="17" y="10" width="5" height="5" rx="1" fill="white" fillOpacity={0.35}/>
+      <rect x="3" y="17" width="5" height="5" rx="1" fill="white" fillOpacity={0.35}/>
+      <rect x="10" y="17" width="5" height="5" rx="1" fill="white" fillOpacity={0.65}/>
+      <rect x="17" y="17" width="5" height="5" rx="1" fill="white" fillOpacity={1}/>
     </svg>
   );
   if (index === 4) return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <line x1="16" y1="12" x2="16" y2="66" stroke="white" strokeWidth="1.5" strokeOpacity="0.4"/>
-      <rect x="18" y="18" width="38" height="9" rx="2" fill="white" fillOpacity="0.9"/>
-      <rect x="18" y="33" width="28" height="9" rx="2" fill="white" fillOpacity="0.7"/>
-      <rect x="18" y="48" width="18" height="9" rx="2" fill="white" fillOpacity="0.5"/>
-      <circle cx="56" cy="22" r="5" fill="white" fillOpacity="0.3" stroke="white" strokeWidth="1.5"/>
-      <path d="M53 22.5L55.5 25L59 20" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <line x1="5" y1="3" x2="5" y2="21" strokeOpacity={0.4}/>
+      <rect x="6" y="5" width="11" height="3.5" rx="1"/>
+      <rect x="6" y="10.5" width="8" height="3.5" rx="1" strokeOpacity={0.7}/>
+      <rect x="6" y="16" width="5" height="3.5" rx="1" strokeOpacity={0.45}/>
+      <path d="M18 7l1 1 1.5-1.5" strokeWidth={1.25}/>
     </svg>
   );
   return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20">
-      <path d="M6 55C11 55 13 25 22 25C31 25 31 55 40 55C49 55 49 38 58 38C67 38 67 46 74 46"
-            stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-      <line x1="31" y1="16" x2="31" y2="64" stroke="white" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.45"/>
-      <line x1="58" y1="16" x2="58" y2="64" stroke="white" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.45"/>
-      <rect x="6" y="66" width="25" height="4" rx="1" fill="white" fillOpacity="0.35"/>
-      <rect x="31" y="66" width="27" height="4" rx="1" fill="white" fillOpacity="0.65"/>
-      <rect x="58" y="66" width="16" height="4" rx="1" fill="white" fillOpacity="0.45"/>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" className="w-6 h-6">
+      <path d="M3 16c2-2 3-7 6-7s4 8 7 8 4-4 5-5"/>
+      <line x1="10" y1="3" x2="10" y2="20" strokeDasharray="3 2" strokeOpacity={0.4}/>
+      <line x1="17" y1="3" x2="17" y2="20" strokeDasharray="3 2" strokeOpacity={0.4}/>
     </svg>
   );
 }
 
-// Gradient backgrounds for project cards
-const gradients = [
-  "from-indigo-100 to-violet-100",
-  "from-sky-100 to-cyan-100",
-  "from-emerald-100 to-teal-100",
-  "from-amber-100 to-orange-100",
-  "from-rose-100 to-pink-100",
-  "from-violet-100 to-purple-100",
-];
+function StatusBadge({ status }: { status?: string }) {
+  if (status === "Live")
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30">
+        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+        Live
+      </span>
+    );
+  if (status === "Complete")
+    return <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30">Complete</span>;
+  return <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/15">In Progress</span>;
+}
 
 export default function PortfolioPage() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
-
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
-      {/* Coming soon banner */}
+      {/* Banner */}
       <div className="mb-10 flex items-start gap-3 px-5 py-4 rounded-xl bg-amber-50 border border-amber-100 text-amber-800">
         <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5 text-amber-400">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm0 7.5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5z" clipRule="evenodd" />
@@ -135,58 +132,67 @@ export default function PortfolioPage() {
         </p>
       </div>
 
-      {/* Featured projects */}
-      {featured.length > 0 && (
-        <section className="mb-10">
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-            Featured
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {featured.map((project, i) => (
-              <article
-                key={project.title}
-                className="group rounded-2xl border border-gray-200 overflow-hidden hover:border-accent/40 hover:shadow-md transition-all"
-              >
-                {/* Project image / placeholder */}
-                <div
-                  className={`h-44 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}
-                >
-                  {project.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <ProjectPlaceholder index={i} />
-                  )}
+      {/* Cards grid */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {projects.map((project, i) => {
+          const style = cardStyle;
+          return (
+            <article
+              key={project.title}
+              className="group flex flex-col rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all"
+            >
+              {/* Gradient header */}
+              <div className={`bg-gradient-to-br ${style.headerBg} px-5 py-5`}>
+                <div className="flex items-start justify-between mb-3">
+                  <div className={`w-10 h-10 rounded-xl ${style.iconBg} flex items-center justify-center text-white flex-shrink-0`}>
+                    <ProjectIcon index={i} />
+                  </div>
+                  <StatusBadge status={project.status} />
+                </div>
+                <h3 className="font-semibold text-white text-base leading-snug">
+                  {project.title}
+                </h3>
+              </div>
+
+              {/* Body */}
+              <div className="flex flex-col flex-1 p-5 bg-white">
+                {/* Problem / Solution */}
+                <div className="space-y-3 mb-5 flex-1">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">The Problem</p>
+                    <p className="text-sm text-gray-700 leading-relaxed italic">{project.problem}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">The Solution</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{project.solution}</p>
+                  </div>
                 </div>
 
-                {/* Card body */}
-                <div className="p-6">
-                  <h3 className="font-semibold text-gray-900 text-lg mb-2 group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`px-2 py-0.5 rounded-md text-xs font-medium border ${style.tag}`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 bg-accent/5 border border-accent/20 text-accent rounded-md text-xs font-medium"
+                {/* Links */}
+                {(project.githubUrl || project.liveUrl) && (
+                  <div className="flex items-center gap-4 pt-3 border-t border-gray-100">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-800 transition-colors"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex items-center gap-3">
+                        <GithubIcon /> Source
+                      </a>
+                    )}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
@@ -197,95 +203,13 @@ export default function PortfolioPage() {
                         <ExternalLinkIcon /> Live Demo
                       </a>
                     )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
-                      >
-                        <GithubIcon /> Source
-                      </a>
-                    )}
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Other projects */}
-      {rest.length > 0 && (
-        <section>
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-            Other Projects
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {rest.map((project, i) => (
-              <article
-                key={project.title}
-                className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 transition-all"
-              >
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-3">
-                  <div
-                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${
-                      gradients[(featured.length + i) % gradients.length]
-                    } flex items-center justify-center flex-shrink-0`}
-                  >
-                    <span className="text-lg font-bold text-white/60 select-none">
-                      {project.title.charAt(0)}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Live demo"
-                        className="text-gray-400 hover:text-accent transition-colors"
-                      >
-                        <ExternalLinkIcon />
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Source code"
-                        className="text-gray-400 hover:text-accent transition-colors"
-                      >
-                        <GithubIcon />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
