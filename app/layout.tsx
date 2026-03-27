@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import { profile } from "@/content/profile";
 import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-lora",
   display: "swap",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+  weight: ["300", "400", "500"],
 });
 
 const ogImages = profile.ogImage
@@ -41,13 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="bg-white">
-        <Sidebar />
-        {/* Offset content by sidebar width on desktop; add top padding on mobile for hamburger */}
-        <div className="lg:pl-64 min-h-screen flex flex-col">
-          <main className="flex-1 pt-16 lg:pt-0">{children}</main>
-        </div>
+    <html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
+      <body className="bg-paper text-ink font-sans font-light antialiased">
+        <Nav />
+        <main>{children}</main>
+        <Footer />
         <Analytics />
       </body>
     </html>

@@ -11,7 +11,7 @@ import {
 
 const GEO_URL =
   "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-const ACCENT = "#2563eb";
+const ACCENT = "#2d5a3d";
 
 type CityInfo = {
   name: string;
@@ -131,7 +131,7 @@ export default function WorldMap() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full rounded-2xl overflow-hidden bg-slate-50 border border-gray-100"
+      className="relative w-full rounded overflow-hidden bg-paper-warm border border-ink/10"
       style={{ aspectRatio: "16 / 9" }}
     >
       <ComposableMap
@@ -145,8 +145,8 @@ export default function WorldMap() {
               <Geography
                 key={geo.rsmKey}
                 geography={geo}
-                fill="#dde3ed"
-                stroke="#f1f5f9"
+                fill="#d8d4cb"
+                stroke="#ede9e1"
                 strokeWidth={0.5}
                 style={{
                   default: { outline: "none" },

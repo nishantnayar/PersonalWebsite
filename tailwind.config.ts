@@ -8,20 +8,30 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-lora)", "Georgia", "serif"],
       },
       colors: {
         accent: {
-          DEFAULT: "#2563eb", // blue-600
-          hover: "#1d4ed8",   // blue-700
+          DEFAULT: "#2d5a3d",
+          hover: "#234831",
+        },
+        ink: {
+          DEFAULT: "#1a1814",
+          mid: "#4a4740",
+          light: "#8a8680",
+        },
+        paper: {
+          DEFAULT: "#f7f5f0",
+          warm: "#ede9e1",
         },
       },
       typography: {
         DEFAULT: {
           css: {
             maxWidth: "none",
-            color: "#374151",
-            a: { color: "#2563eb", "&:hover": { color: "#1d4ed8" } },
+            color: "#4a4740",
+            a: { color: "#2d5a3d", "&:hover": { color: "#234831" } },
           },
         },
       },

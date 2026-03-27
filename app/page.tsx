@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { profile } from "@/content/profile";
 import WorldMapWrapper from "@/components/WorldMapWrapper";
 
@@ -18,218 +17,185 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
-  const { name, tagline, bio, skills, social, resumeUrl, stats, currently, education } = profile;
-  const paragraphs = bio.split("\n\n").map((p) => p.trim()).filter(Boolean);
+function SectionDivider({ label }: { label: string }) {
+  return (
+    <div className="flex items-center gap-4 mb-10">
+      <div className="flex-1 h-px bg-ink/10" />
+      <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-ink-light">
+        {label}
+      </span>
+      <div className="flex-1 h-px bg-ink/10" />
+    </div>
+  );
+}
+
+const pillars = [
+  {
+    title: "Data to decisions",
+    desc: "How data science insights turn into outcomes that actually change how a business operates — and what usually gets in the way.",
+  },
+  {
+    title: "Tech to delivery",
+    desc: "What it takes to ship complex technical programs — from the first stakeholder meeting to the moment the tool is actually used.",
+  },
+  {
+    title: "Bridge building",
+    desc: "Translating between engineers, product, finance, and business. The part of the work nobody budgets for — and the part that determines whether any of the other work matters.",
+  },
+];
+
+export default function HomePage() {
+  const { stats, social } = profile;
 
   return (
-    <div className="max-w-3xl mx-auto px-8 md:px-12 py-16 md:py-20">
+    <div className="max-w-[680px] mx-auto px-8 pb-24">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="mb-16 relative">
-        {/* Subtle background glow */}
-        <div className="absolute -top-8 -right-8 w-72 h-72 bg-accent/5 rounded-full blur-3xl pointer-events-none -z-10" />
+      <section className="mt-16 mb-20">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent">
+            Data · Technology · Business
+          </span>
+          <span className="inline-block w-8 h-px bg-accent flex-shrink-0" />
+        </div>
 
-        <p className="text-sm font-medium text-accent uppercase tracking-widest mb-4">
-          Hello, I&apos;m {name.split(" ")[0]}
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-          {tagline}
+        <h1 className="font-serif text-[clamp(26px,5vw,40px)] font-normal leading-[1.25] text-ink mb-7 tracking-[-0.01em]">
+          Most people in data science<br />
+          came from computer science.<br />
+          <em className="italic text-ink-mid">I came from finance.</em>
         </h1>
-        <p className="text-base text-gray-500 leading-relaxed mb-8">
-          Lead Solutions Analyst &amp; Technical Program Manager · Data Science · Financial Services · Writing about the gap between tech and business.
+
+        <p className="text-[17px] font-light leading-[1.75] text-ink-mid max-w-[520px] mb-8">
+          That difference changed everything about how I approach a problem.
+          I spent 10 years sitting between technical teams and business teams —
+          learning{" "}
+          <strong className="font-medium text-ink">
+            what gets lost in translation, and how to close the gap.
+          </strong>
         </p>
-        <div className="flex flex-wrap gap-3 mb-10">
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors shadow-sm shadow-accent/25"
+
+        {social.linkedin && (
+          <a
+            href={social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.08em] text-accent border-b border-accent pb-[2px] hover:gap-4 transition-all"
           >
-            View My Work
-          </Link>
-          {resumeUrl && (
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:border-gray-300 hover:bg-gray-50 transition-colors"
-            >
-              Download Resume
-            </a>
-          )}
-          {social.email && (
-            <a
-              href={`mailto:${social.email}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:border-gray-300 hover:bg-gray-50 transition-colors"
-            >
-              Get in Touch
-            </a>
-          )}
-        </div>
-
-        {/* Stats strip */}
-        {stats && stats.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {stats.map(({ value, label }) => (
-              <div
-                key={label}
-                className="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center"
-              >
-                <p className="text-xl font-bold text-gray-900">{value}</p>
-                <p className="text-xs text-gray-500 mt-0.5 leading-snug">{label}</p>
-              </div>
-            ))}
-          </div>
+            Follow on LinkedIn →
+          </a>
         )}
-
-        {/* CTA strip */}
-        <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 px-5 py-4 rounded-xl bg-accent/5 border border-accent/15">
-          <p className="flex-1 text-sm text-gray-600 leading-relaxed">
-            <span className="font-semibold text-gray-900">Open to conversations</span>{" "}
-            about data strategy, program delivery, and XAI in financial services.
-          </p>
-          <div className="flex items-center gap-2 flex-shrink-0">
-            {social.linkedin && (
-              <a
-                href={social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
-              >
-                Connect on LinkedIn
-              </a>
-            )}
-            {social.email && (
-              <a
-                href={`mailto:${social.email}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-gray-300 hover:bg-white transition-colors"
-              >
-                Email
-              </a>
-            )}
-          </div>
-        </div>
       </section>
 
-      <div className="mb-16 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+      {/* ── About ────────────────────────────────────────────── */}
+      <SectionDivider label="About" />
 
-      {/* ── Bio ──────────────────────────────────────────────── */}
-      <section className="mb-16">
-        <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-          About Me
-        </h2>
-        <div className="space-y-4 max-w-2xl">
-          {paragraphs.map((p, i) => (
-            <p key={i} className="text-gray-600 leading-relaxed text-[1.05rem]">
-              {p}
-            </p>
+      <section className="mb-20">
+        <p className="text-[16px] leading-[1.85] text-ink-mid mb-5">
+          I lead robotics and automation at JPMorgan Chase&apos;s Commercial Bank.
+          Before this, I spent a decade moving between investment banking, asset management,
+          and commercial banking — across Bangalore, Tokyo, London, New York, Boston, and Chicago.
+        </p>
+
+        <blockquote className="border-l-2 border-accent pl-6 py-1 my-10">
+          <p className="font-serif text-[18px] italic leading-[1.55] text-ink">
+            I know what the business is actually asking for before the first line of code gets written.
+          </p>
+        </blockquote>
+
+        <p className="text-[16px] leading-[1.85] text-ink-mid mb-5">
+          Most data scientists learn their craft in one direction: start with a model, work toward a business.
+          I learned it from the other end. Finance first.{" "}
+          <strong className="font-medium text-ink">
+            That means I learned to frame problems before solving them
+          </strong>{" "}
+          — which turns out to be the part most projects get wrong.
+        </p>
+
+        <p className="text-[16px] leading-[1.85] text-ink-mid">
+          My job at JPMorgan Chase is to take complex technical programs and make them land.
+          That means translating between engineers, data scientists, and the people who sign off on the work.
+          I write about what I keep seeing in that space.
+        </p>
+      </section>
+
+      {/* ── What I write about ───────────────────────────────── */}
+      <SectionDivider label="What I write about" />
+
+      <section className="mb-20">
+        {pillars.map((p, i) => (
+          <div
+            key={i}
+            className="grid grid-cols-[48px_1fr] gap-x-6 py-7 border-b border-ink/10 first:border-t first:border-ink/10"
+          >
+            <span className="font-serif text-[13px] italic text-ink-light pt-[2px]">
+              0{i + 1}.
+            </span>
+            <div>
+              <p className="text-[15px] font-medium text-ink mb-2 tracking-[0.01em]">{p.title}</p>
+              <p className="text-[14px] font-light leading-[1.7] text-ink-mid">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Background ───────────────────────────────────────── */}
+      <SectionDivider label="Background" />
+
+      {stats && stats.length > 0 && (
+        <div className="bg-paper-warm rounded-sm p-8 grid grid-cols-2 gap-x-8 gap-y-7 mb-20">
+          {stats.map(({ value, label }) => (
+            <div key={label}>
+              <p className="font-serif text-[28px] font-normal text-ink leading-none mb-1.5">
+                {value}
+              </p>
+              <p className="text-[12px] font-normal text-ink-light leading-[1.5]">{label}</p>
+            </div>
           ))}
         </div>
-      </section>
+      )}
 
       {/* ── Global Footprint ─────────────────────────────────── */}
-      <section className="mb-16">
-        <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-          Global Footprint
-        </h2>
-        <p className="text-sm text-gray-500 mb-5">
-          Six cities across four continents — hover a pin to see the work.
+      <SectionDivider label="Global Footprint" />
+
+      <section className="mb-20">
+        <p className="text-[13px] text-ink-light mb-5">
+          Six cities across four continents
         </p>
         <WorldMapWrapper />
       </section>
 
-      {/* ── Education ────────────────────────────────────────── */}
-      {education && education.length > 0 && (
-        <section className="mb-16">
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-            Education
-          </h2>
-          <div className="space-y-4">
-            {education.map((ed) => (
-              <div
-                key={ed.institution}
-                className="flex items-center gap-5 p-5 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all"
-              >
-                {/* Logo or color badge */}
-                <div
-                  className="relative flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center shadow-sm"
-                  style={{ backgroundColor: ed.logoUrl ? "transparent" : ed.color }}
-                >
-                  {ed.logoUrl ? (
-                    <Image
-                      src={ed.logoUrl}
-                      alt={ed.institution}
-                      fill
-                      className="object-contain p-1"
-                      sizes="56px"
-                    />
-                  ) : (
-                    <span className="text-white font-bold text-xs tracking-tight text-center px-1 leading-tight">
-                      {ed.abbreviation}
-                    </span>
-                  )}
-                </div>
+      {/* ── Writing ──────────────────────────────────────────── */}
+      <SectionDivider label="Writing" />
 
-                {/* Degree details */}
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-900 leading-snug">{ed.degree}</p>
-                  <p className="text-sm font-medium mt-0.5" style={{ color: ed.color }}>
-                    {ed.institution}
-                  </p>
-                  {ed.location && (
-                    <p className="text-xs text-gray-400 mt-0.5">{ed.location}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      <div className="mb-20">
+        <p className="text-[16px] font-light leading-[1.8] text-ink-mid mb-6">
+          I write on LinkedIn about the patterns I keep seeing at the intersection of data, technology,
+          and business.{" "}
+          <strong className="font-medium text-ink">
+            If you are early in your career trying to figure out how these fields fit together,
+            or a senior professional who has felt the translation problem yourself,
+          </strong>{" "}
+          the writing is for you.
+        </p>
 
-      {/* ── Skills ───────────────────────────────────────────── */}
-      {skills.length > 0 && (
-        <section className="mb-16">
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block flex-shrink-0" />
-            Skills & Technologies
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="px-3 py-1.5 bg-accent/5 border border-accent/20 text-accent rounded-lg text-sm font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Quick nav ────────────────────────────────────────── */}
-      <div className="grid sm:grid-cols-2 gap-4">
-        <Link
-          href="/portfolio"
-          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 hover:shadow-sm transition-all"
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Explore</p>
-          <p className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
-            Portfolio →
-          </p>
-          <p className="text-sm text-gray-500 mt-1">Projects I&apos;ve designed and built</p>
-        </Link>
-        <Link
-          href="/blog"
-          className="group p-6 rounded-2xl border border-gray-200 hover:border-accent/40 hover:bg-accent/5 hover:shadow-sm transition-all"
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Read</p>
-          <p className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
-            Blog →
-          </p>
-          <p className="text-sm text-gray-500 mt-1">Writing on data, AI, and craft</p>
-        </Link>
+        <div className="flex flex-wrap gap-6 items-center">
+          {social.linkedin && (
+            <a
+              href={social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.06em] bg-accent text-paper px-[22px] py-[11px] rounded-sm hover:opacity-85 transition-opacity"
+            >
+              Read on LinkedIn →
+            </a>
+          )}
+          <Link
+            href="/portfolio"
+            className="text-[13px] font-normal text-ink-light border-b border-ink/15 pb-[1px] hover:text-ink transition-colors"
+          >
+            View projects
+          </Link>
+        </div>
       </div>
 
     </div>

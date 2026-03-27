@@ -33,12 +33,6 @@ function GithubIcon() {
   );
 }
 
-const cardStyle = {
-  headerBg: "from-slate-800 to-slate-900",
-  iconBg: "bg-white/10",
-  tag: "bg-accent/5 text-accent border-accent/20",
-};
-
 function ProjectIcon({ index }: { index: number }) {
   if (index === 0) return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
@@ -99,116 +93,101 @@ function ProjectIcon({ index }: { index: number }) {
 function StatusBadge({ status }: { status?: string }) {
   if (status === "Live")
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/20 text-white border border-white/30">
         <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
         Live
       </span>
     );
   if (status === "Complete")
-    return <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30">Complete</span>;
-  return <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/15">In Progress</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/20 text-white border border-white/30">Complete</span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/10 text-white/70 border border-white/15">In Progress</span>;
 }
 
 export default function PortfolioPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-[900px] mx-auto px-8 py-16">
       {/* Banner */}
-      <div className="mb-10 flex items-start gap-3 px-5 py-4 rounded-xl bg-amber-50 border border-amber-100 text-amber-800">
-        <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5 text-amber-400">
+      <div className="mb-10 flex items-start gap-3 px-5 py-4 rounded border border-ink/10 bg-paper-warm text-ink-mid">
+        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 flex-shrink-0 mt-0.5 text-ink-light">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm0 7.5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5z" clipRule="evenodd" />
         </svg>
-        <p className="text-sm leading-relaxed">
-          <span className="font-semibold">Actively building</span>{" "}
+        <p className="text-[13px] font-light leading-relaxed">
+          <span className="font-medium text-ink">Actively building</span>{" "}
           — Credit Risk XAI model and RAG Financial Document Q&amp;A in progress. GitHub repos and write-ups will be linked here as each project ships.
         </p>
       </div>
 
       {/* Header */}
       <div className="mb-14">
-        <p className="text-sm font-medium text-accent uppercase tracking-widest mb-3">Work</p>
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Portfolio</h1>
-        <p className="text-lg text-gray-500 max-w-xl">
+        <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent mb-4">Work</p>
+        <h1 className="font-serif text-[36px] font-normal text-ink mb-4 tracking-[-0.01em]">Portfolio</h1>
+        <p className="text-[16px] font-light leading-[1.75] text-ink-mid max-w-xl">
           A selection of projects at the intersection of data, AI, and financial services.
         </p>
       </div>
 
-      {/* Cards grid */}
+      {/* Cards */}
       <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project, i) => {
-          const style = cardStyle;
-          return (
-            <article
-              key={project.title}
-              className="group flex flex-col rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all"
-            >
-              {/* Gradient header */}
-              <div className={`bg-gradient-to-br ${style.headerBg} px-5 py-5`}>
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`w-10 h-10 rounded-xl ${style.iconBg} flex items-center justify-center text-white flex-shrink-0`}>
-                    <ProjectIcon index={i} />
-                  </div>
-                  <StatusBadge status={project.status} />
+        {projects.map((project, i) => (
+          <article
+            key={project.title}
+            className="group flex flex-col rounded overflow-hidden border border-ink/10 hover:shadow-lg hover:border-ink/20 transition-all"
+          >
+            {/* Dark header */}
+            <div className="bg-ink px-5 py-5">
+              <div className="flex items-start justify-between mb-3">
+                <div className="w-10 h-10 rounded bg-white/10 flex items-center justify-center text-white flex-shrink-0">
+                  <ProjectIcon index={i} />
                 </div>
-                <h3 className="font-semibold text-white text-base leading-snug">
-                  {project.title}
-                </h3>
+                <StatusBadge status={project.status} />
+              </div>
+              <h3 className="font-medium text-white text-[14px] leading-snug">
+                {project.title}
+              </h3>
+            </div>
+
+            {/* Body */}
+            <div className="flex flex-col flex-1 p-5 bg-paper">
+              <div className="space-y-4 mb-5 flex-1">
+                <div>
+                  <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-ink-light mb-1.5">The Problem</p>
+                  <p className="text-[13px] font-light text-ink-mid leading-relaxed italic">{project.problem}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-ink-light mb-1.5">The Solution</p>
+                  <p className="text-[13px] font-light text-ink-mid leading-relaxed">{project.solution}</p>
+                </div>
               </div>
 
-              {/* Body */}
-              <div className="flex flex-col flex-1 p-5 bg-white">
-                {/* Problem / Solution */}
-                <div className="space-y-3 mb-5 flex-1">
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">The Problem</p>
-                    <p className="text-sm text-gray-700 leading-relaxed italic">{project.problem}</p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">The Solution</p>
-                    <p className="text-sm text-gray-600 leading-relaxed">{project.solution}</p>
-                  </div>
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`px-2 py-0.5 rounded-md text-xs font-medium border ${style.tag}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                {(project.githubUrl || project.liveUrl) && (
-                  <div className="flex items-center gap-4 pt-3 border-t border-gray-100">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-800 transition-colors"
-                      >
-                        <GithubIcon /> Source
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-                      >
-                        <ExternalLinkIcon /> Live Demo
-                      </a>
-                    )}
-                  </div>
-                )}
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 bg-paper-warm border border-ink/10 text-ink-mid rounded text-[11px] font-normal">
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </article>
-          );
-        })}
+
+              {/* Links */}
+              {(project.githubUrl || project.liveUrl) && (
+                <div className="flex items-center gap-4 pt-3 border-t border-ink/8">
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink-light hover:text-ink transition-colors">
+                      <GithubIcon /> Source
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[12px] font-medium text-accent hover:text-accent-hover transition-colors">
+                      <ExternalLinkIcon /> Live Demo
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );
