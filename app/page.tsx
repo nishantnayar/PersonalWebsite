@@ -91,7 +91,7 @@ export default function HomePage() {
 
       <section className="mb-20">
         <p className="text-[16px] leading-[1.85] text-ink-mid mb-5">
-          I lead robotics and automation at JPMorgan Chase&apos;s Commercial Bank.
+          I am a Lead Solutions Analyst at JPMorgan Chase.
           Before this, I spent a decade moving between investment banking, asset management,
           and commercial banking — across Bangalore, Tokyo, London, New York, Boston, and Chicago.
         </p>
@@ -168,6 +168,28 @@ export default function HomePage() {
       <SectionDivider label="Writing" />
 
       <div className="mb-20">
+        {social.linkedin && (
+          <a
+            href={social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-ink/10 rounded-sm p-6 mb-6 hover:bg-paper-warm transition-colors"
+          >
+            <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-light mb-3">
+              Most read · March 2026
+            </p>
+            <p className="font-serif text-[17px] leading-[1.5] text-ink mb-3">
+              Most people in data science came from computer science. I came from finance.
+            </p>
+            <p className="text-[14px] font-light leading-[1.7] text-ink-mid mb-4">
+              That difference changed everything about how I approach a problem — and why I ended up doing work most data scientists never touch.
+            </p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.07em] text-accent">
+              Read on LinkedIn →
+            </p>
+          </a>
+        )}
+
         <p className="text-[16px] font-light leading-[1.8] text-ink-mid mb-6">
           I write on LinkedIn about the patterns I keep seeing at the intersection of data, technology,
           and business.{" "}
@@ -193,7 +215,7 @@ export default function HomePage() {
             href="/portfolio"
             className="text-[13px] font-normal text-ink-light border-b border-ink/15 pb-[1px] hover:text-ink transition-colors"
           >
-            View projects
+            View projects →
           </Link>
         </div>
       </div>

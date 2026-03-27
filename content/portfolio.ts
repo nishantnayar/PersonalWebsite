@@ -21,7 +21,7 @@ export type Project = {
   bullets: string[];
   problem: string;
   solution: string;
-  status?: "In Progress" | "Live" | "Complete";
+  status?: string;
   tags: string[];
   liveUrl: string | null;
   githubUrl: string | null;
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     ],
     problem: "Regulators require banks to explain every credit decision — most black-box models can't.",
     solution: "A SHAP explanation layer generates ranked, plain-language rejection reasons aligned to SR 11-7.",
-    status: "In Progress",
+    status: "Building now — ships April 2026",
     tags: ["Python", "Classification", "SHAP", "LIME", "Credit Risk", "Regulatory / SR 11-7"],
     liveUrl: null,
     githubUrl: null,
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     ],
     problem: "Analysts spend 4+ hours reading a single 10-K filing to extract a handful of key passages.",
     solution: "A RAG system ingests filings and answers natural language questions with cited source passages in minutes.",
-    status: "In Progress",
+    status: "Building now — ships April 2026",
     tags: ["Python", "RAG", "LangChain", "FAISS", "OpenAI", "Streamlit", "Generative AI"],
     liveUrl: null,
     githubUrl: null,
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     ],
     problem: "Most data science pipelines don't measure whether the data feeding them is actually trustworthy.",
     solution: "An interactive dashboard scores datasets across four quality dimensions and flags anomalies before they reach the model.",
-    status: "In Progress",
+    status: "Up next — Q3 2026",
     tags: ["Python", "Data Governance", "Streamlit", "Data Quality", "Data Profiling"],
     liveUrl: null,
     githubUrl: null,
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     ],
     problem: "Status reports flag delivery problems weeks after they've already become unfixable.",
     solution: "An ML model trained on project data predicts delay risk and scope creep six weeks before it shows up in a report.",
-    status: "In Progress",
+    status: "Up next — Q3 2026",
     tags: ["Python", "Predictive ML", "TPM Domain", "Cross-functional", "Kaggle"],
     liveUrl: null,
     githubUrl: null,
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     ],
     problem: "Most trading strategies fail silently when market conditions shift — they were built for one regime.",
     solution: "An HMM classifier detects the current market regime and switches strategy rules automatically.",
-    status: "In Progress",
+    status: "Up next — Q3 2026",
     tags: ["Python", "Unsupervised ML", "HMM", "Clustering", "Quantitative Finance"],
     liveUrl: null,
     githubUrl: null,

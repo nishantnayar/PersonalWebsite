@@ -91,6 +91,7 @@ function ProjectIcon({ index }: { index: number }) {
 }
 
 function StatusBadge({ status }: { status?: string }) {
+  if (!status) return null;
   if (status === "Live")
     return (
       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/20 text-white border border-white/30">
@@ -100,7 +101,7 @@ function StatusBadge({ status }: { status?: string }) {
     );
   if (status === "Complete")
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/20 text-white border border-white/30">Complete</span>;
-  return <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/10 text-white/70 border border-white/15">In Progress</span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/10 text-white/70 border border-white/15">{status}</span>;
 }
 
 export default function PortfolioPage() {
@@ -112,8 +113,8 @@ export default function PortfolioPage() {
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm0 7.5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5z" clipRule="evenodd" />
         </svg>
         <p className="text-[13px] font-light leading-relaxed">
-          <span className="font-medium text-ink">Actively building</span>{" "}
-          — Credit Risk XAI model and RAG Financial Document Q&amp;A in progress. GitHub repos and write-ups will be linked here as each project ships.
+          Each project starts with a business question, not a model.{" "}
+          <span className="font-medium text-ink">The GitHub repo is the evidence, not the headline.</span>
         </p>
       </div>
 
@@ -188,6 +189,22 @@ export default function PortfolioPage() {
             </div>
           </article>
         ))}
+      </div>
+
+      {/* Footer CTA */}
+      <div className="mt-16 pt-8 border-t border-ink/10 text-center">
+        <p className="text-[14px] font-light text-ink-mid">
+          I write about the thinking behind this work on{" "}
+          <a
+            href={profile.social.linkedin ?? "https://linkedin.com/in/nishantnayar"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent border-b border-accent/40 hover:border-accent transition-colors"
+          >
+            LinkedIn
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

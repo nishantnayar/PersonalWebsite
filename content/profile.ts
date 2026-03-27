@@ -25,10 +25,10 @@ Outside of work, he mentors early-career professionals navigating the same cross
   // --- Stats (3–4 highlights shown below the hero) ---
   // Edit values and labels freely; set to [] to hide the strip
   stats: [
-    { value: "10+", label: "Years Experience" },
-    { value: "MBA + M.S.", label: "Two Advanced Degrees" },
-    { value: "M.S.", label: "Analytics · UChicago" },
-    { value: "6 Cities", label: "Global Experience" },
+    { value: "10+", label: "Years across investment banking, asset management, and commercial banking" },
+    { value: "6", label: "Cities — Bangalore · Tokyo · London · New York · Boston · Chicago" },
+    { value: "3.95", label: "GPA · MS Analytics, University of Chicago" },
+    { value: "VP", label: "Lead Solutions Analyst · JPMorgan Chase" },
   ],
 
   // --- Currently (shown in sidebar — what you're focused on right now) ---
