@@ -16,112 +16,231 @@
   }
 }
 
-/* ── Prose styles for blog post HTML content ─────────────────── */
-@layer components {
-  .prose-content {
-    @apply text-ink-mid leading-relaxed;
-  }
+/* ── Blog post prose ─────────────────────────────────────────── */
+.blog-prose {
+  font-size: 18px;
+  line-height: 1.75;
+  color: #4a4740;
+}
 
-  .prose-content h2 {
-    @apply font-serif text-2xl font-normal text-ink mt-10 mb-4;
-  }
+.blog-prose h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a1410;
+  margin-top: 64px;
+  margin-bottom: 20px;
+}
 
-  .prose-content h3 {
-    @apply font-serif text-xl font-normal text-ink mt-8 mb-3;
-  }
+.blog-prose h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: #1a1410;
+  margin-bottom: 14px;
+}
 
-  .prose-content p {
-    @apply mb-5 text-[16px] leading-[1.85];
-  }
+.blog-prose p {
+  margin-bottom: 24px;
+}
 
-  .prose-content a {
-    @apply text-accent underline underline-offset-2 hover:text-accent-hover;
-  }
+.blog-prose p:last-child {
+  margin-bottom: 0;
+}
 
-  .prose-content ul {
-    @apply list-disc list-outside ml-6 mb-5 space-y-1;
-  }
+.blog-prose em { font-style: italic; }
+.blog-prose strong { font-weight: 600; color: #1a1410; }
 
-  .prose-content ol {
-    @apply list-decimal list-outside ml-6 mb-5 space-y-1;
-  }
+.blog-prose a {
+  color: #b85c38;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
-  .prose-content blockquote {
-    @apply border-l-2 border-accent pl-6 py-1 my-8;
-  }
+/* Lead paragraph */
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #1a1410;
+  margin-bottom: 24px;
+}
 
-  .prose-content blockquote p {
-    @apply font-serif italic text-[18px] leading-[1.55] text-ink;
-  }
+/* Section rule — · · · with lines */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0;
+  color: #7a6e64;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #d4cec4;
+}
 
-  .prose-content pre {
-    @apply bg-ink text-paper rounded px-5 py-5 my-6 overflow-x-auto text-sm leading-relaxed;
-  }
+/* Pattern blocks */
+.patterns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #d4cec4;
+  border: 1px solid #d4cec4;
+  margin: 32px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-  .prose-content code:not(pre code) {
-    @apply bg-paper-warm text-accent px-1.5 py-0.5 rounded text-sm font-mono;
-  }
+.pattern-block {
+  background: #f5f0e8;
+  padding: 28px 24px;
+}
 
-  .prose-content table {
-    @apply w-full border-collapse my-6 text-sm;
-  }
+.pattern-label {
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b85c38;
+  margin-bottom: 10px;
+}
 
-  .prose-content th {
-    @apply bg-paper-warm font-medium text-left px-4 py-2 border border-ink/10;
-  }
+.pattern-block p {
+  font-size: 0.9rem;
+  color: #7a6e64;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
 
-  .prose-content td {
-    @apply px-4 py-2 border border-ink/10;
-  }
+.pattern-outcome {
+  grid-column: 1 / -1;
+  background: #e8dfc8;
+  padding: 20px 24px;
+  border-top: 1px solid #d4cec4;
+}
 
-  .prose-content hr {
-    @apply border-ink/10 my-8;
-  }
+.pattern-outcome .pattern-label {
+  color: #1a1410;
+  opacity: 0.5;
+}
 
-  .lede {
-    @apply font-serif text-xl leading-relaxed text-ink-mid mb-8 italic pl-6 border-l-2 border-accent;
-  }
+.pattern-outcome p {
+  font-size: 0.88rem;
+  color: #1a1410;
+  margin-bottom: 0;
+  font-style: italic;
+}
 
-  .pattern-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    @apply bg-ink/10 border border-ink/10 my-8 rounded overflow-hidden;
-  }
+/* Pull quote */
+.pullquote {
+  margin: 56px -40px;
+  padding: 44px 40px;
+  border-left: 3px solid #b85c38;
+  background: linear-gradient(to right, rgba(184, 92, 56, 0.06), transparent);
+}
 
-  .pattern-cell {
-    @apply bg-paper p-5;
-  }
+.pullquote p {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: #1a1410;
+  margin-bottom: 0;
+}
 
-  .pattern-cell .label {
-    @apply text-xs uppercase tracking-widest text-ink-light mb-2 font-medium;
-  }
+/* Lesson items — first has no top border, subsequent do */
+.lesson {
+  margin-top: 28px;
+}
 
-  .pattern-cell p {
-    @apply text-sm text-ink-mid mb-0;
-  }
+.lesson + .lesson {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid #d4cec4;
+}
 
-  .pattern-cell.win .label {
-    @apply text-accent;
-  }
+/* CTA block */
+.cta-block {
+  margin-top: 72px;
+  padding: 48px 40px;
+  background: #1a1410;
+  color: #f5f0e8;
+  border-radius: 4px;
+}
 
-  .cta-card {
-    @apply bg-ink text-paper rounded px-8 py-8 my-12;
-  }
+.cta-block h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f5f0e8;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
 
-  .cta-card h2 {
-    @apply font-serif text-paper text-2xl font-normal mt-0 mb-4;
-  }
+.cta-block p {
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
 
-  .cta-card p {
-    @apply text-ink-light mb-4;
-  }
+.cta-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-  .cta-card p:last-child {
-    @apply mb-0;
-  }
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
 
-  @media (max-width: 560px) {
-    .pattern-grid { grid-template-columns: 1fr; }
-  }
+/* Scoped under .blog-prose so these beat .blog-prose a (otherwise orange-on-orange text) */
+.blog-prose .cta-link {
+  text-decoration: none;
+}
+
+.blog-prose .cta-link.cta-link-primary {
+  background: #b85c38;
+  color: #fff;
+}
+
+.blog-prose .cta-link.cta-link-primary:hover {
+  background: #c96840;
+  color: #fff;
+}
+
+.blog-prose .cta-link.cta-link-secondary {
+  border: 1px solid rgba(245, 240, 232, 0.25);
+  color: #f5f0e8;
+}
+
+.blog-prose .cta-link.cta-link-secondary:hover {
+  border-color: rgba(245, 240, 232, 0.6);
+  color: #f5f0e8;
+}
+
+@media (max-width: 560px) {
+  .patterns { grid-template-columns: 1fr; }
+  .pattern-outcome { grid-column: 1; }
+  .pullquote { margin: 40px -12px; padding: 32px 24px; }
 }

@@ -10,6 +10,8 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-lora)", "Georgia", "serif"],
+        display: ["var(--font-playfair)", "Georgia", "serif"],
+        mono: ["var(--font-dm-mono)", "ui-monospace", "monospace"],
       },
       colors: {
         accent: {

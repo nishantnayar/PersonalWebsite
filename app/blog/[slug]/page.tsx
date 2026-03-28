@@ -4,17 +4,18 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
 import { profile } from "@/content/profile";
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return {};
 
-  const url = `/blog/${params.slug}`;
+  const url = `/blog/${slug}`;
   const ogImages = profile.ogImage
     ? [{ url: profile.ogImage, width: 1200, height: 630, alt: post.title }]
     : [];
@@ -38,34 +39,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) notFound();
 
+  const words = post.contentHtml.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.ceil(words / 200));
+
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
-      {/* Back link */}
-      <div className="mb-10">
+    <>
+      {/* Hero */}
+      <div className="max-w-[860px] mx-auto px-8 md:px-12 pt-14 pb-16">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-[#7a6e64] hover:text-ink transition-colors mb-10"
         >
-          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+          <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
             <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
           </svg>
           All posts
         </Link>
-      </div>
 
-      {/* Article header */}
-      <header className="mb-12">
-        {/* Tags */}
         {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-7">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 bg-accent/5 border border-accent/20 text-accent rounded-lg text-xs font-medium"
+                className="font-mono text-[10px] font-medium tracking-[0.16em] uppercase text-[#b85c38] border border-[#b85c38] px-2.5 py-1 rounded-[2px]"
               >
                 {tag}
               </span>
@@ -73,36 +74,22 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+        <h1 className="font-display text-[clamp(2.2rem,5vw,3.4rem)] font-bold leading-[1.15] tracking-[-0.01em] text-ink mb-5">
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-4 text-sm text-gray-400">
+        <div className="flex items-center gap-5 font-mono text-[12px] text-[#7a6e64] tracking-[0.08em]">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <span className="opacity-40">·</span>
+          <span>{readTime} min read</span>
         </div>
-      </header>
+      </div>
 
-      {/* Article divider */}
-      <div className="border-t border-gray-100 mb-12" />
-
-      {/* Article content */}
+      {/* Article */}
       <article
-        className="prose-content max-w-2xl"
+        className="max-w-[680px] mx-auto px-8 md:px-12 pb-32 blog-prose"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
-
-      {/* Footer nav */}
-      <div className="mt-16 pt-8 border-t border-gray-100">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-accent transition-colors"
-        >
-          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-            <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
-          </svg>
-          Back to all posts
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }
