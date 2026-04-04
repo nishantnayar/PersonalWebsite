@@ -93,6 +93,34 @@ Outside of work, he mentors early-career professionals navigating the same cross
     // Add more as needed: dribbble, youtube, etc.
   },
 
+  // --- Work Experience (for future Experience section) ---
+  experience: [
+    {
+      title: "Lead Solutions Analyst / Lead Technical Program Manager",
+      company: "JPMorgan Chase",
+      period: "2022 – Present",
+      location: "Chicago, IL",
+    },
+    {
+      title: "Senior Data Analyst",
+      company: "Northern Trust",
+      period: "2020 – 2022",
+      location: "Chicago, IL",
+    },
+    {
+      title: "Data Analyst",
+      company: "Mizuho Financial Group",
+      period: "2018 – 2020",
+      location: "New York, NY",
+    },
+    {
+      title: "Investment Banking Analyst",
+      company: "Standard Chartered Bank",
+      period: "2015 – 2018",
+      location: "London / Tokyo / Bangalore",
+    },
+  ],
+
   // --- Resume / CV ---
   // Place your resume PDF in /public/ and update the path, or set to null to hide.
   resumeUrl: null as string | null,
