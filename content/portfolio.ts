@@ -31,6 +31,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Robinhood Portfolio Tracker",
+    description:
+      "Robinhood's UI is built for execution, not long-horizon analysis. This local-first pipeline syncs your positions, orders, dividends, and price history into PostgreSQL — then surfaces P&L, risk metrics, and a Streamlit dashboard you actually own.",
+    bullets: [
+      "FIFO / LIFO / average-cost P&L with wash-sale flagging and matched buy lots",
+      "Alpha, beta, drawdown, and concentration metrics benchmarked against SPY",
+      "Streamlit dashboard with equity curve, OHLC charts, watchlist, alerts, and a Claude-powered trade journal",
+    ],
+    problem: "Robinhood shows you your balance. It doesn't show you your win rate, drawdown, alpha vs SPY, or which positions are eating your concentration.",
+    solution: "A sync-store-analyze-visualize pipeline: pull data from the Robinhood API into Postgres, run FIFO lot matching and risk metrics, surface everything in a Streamlit dashboard with an optional Claude copilot for trade journaling.",
+    status: "Live — actively extended",
+    tags: ["Python", "PostgreSQL", "Streamlit", "Plotly", "Prefect", "Claude API", "Quantitative Finance"],
+    liveUrl: null,
+    githubUrl: "https://github.com/nishantnayar/Robinhood",
+    imageUrl: null,
+    featured: true,
+  },
+  {
     title: "Credit Risk Model with Explainable Rejections",
     description:
       "Regulators require banks to explain every credit decision. This project builds a default-prediction classifier on the Lending Club dataset, then wraps it with a SHAP explanation layer that produces plain-language rejection reasons — mirroring SR 11-7 model risk management requirements.",
