@@ -33,7 +33,7 @@ Outside of work, he mentors early-career professionals navigating the same cross
 
   // --- Currently (shown in sidebar — what you're focused on right now) ---
   // Set to null to hide
-  currently: "Building a TFT forecasting model with XAI interpretability stack · Speaking at DataFest Northwestern · Writing on LinkedIn about the gap between data and decisions" as string | null,
+  currently: "Published Titanic XAI — stress-testing counterfactual explanation methods against GDPR, CFPB, and EU AI Act · Writing on LinkedIn about the gap between data and decisions" as string | null,
 
   // --- Profile photo ---
   // Place your photo in /public/images/ and update the path below.

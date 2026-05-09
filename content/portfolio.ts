@@ -29,6 +29,7 @@ export type Project = {
   featured?: boolean;
 };
 
+// Order: Live → Building now → Up next
 export const projects: Project[] = [
   {
     title: "Robinhood Portfolio Tracker",
@@ -45,6 +46,42 @@ export const projects: Project[] = [
     tags: ["Python", "PostgreSQL", "Streamlit", "Plotly", "Prefect", "Claude API", "Quantitative Finance"],
     liveUrl: null,
     githubUrl: "https://github.com/nishantnayar/Robinhood",
+    imageUrl: null,
+    featured: true,
+  },
+  {
+    title: "Earnings Call Sentiment → Stock Movement Predictor",
+    description:
+      "A buy-side analyst can now quantify what they were already doing intuitively — reading between the lines of management language. This project pulls earnings call transcripts from SEC EDGAR, applies NLP to extract sentiment signals, then builds a model predicting 5-day post-earnings price direction.",
+    bullets: [
+      "Extracts sentiment, tone, and uncertainty signals from SEC EDGAR transcripts",
+      "Predicts 5-day post-earnings price direction with an XAI layer",
+      "SHAP surfaces which phrases — 'headwinds', 'record quarter' — drove the signal",
+    ],
+    problem: "Buy-side analysts read tone and language intuitively during earnings calls — but can't quantify it.",
+    solution: "NLP extracts sentiment signals from EDGAR transcripts; SHAP shows which phrases moved the needle.",
+    status: "Live",
+    tags: ["Python", "NLP", "SHAP / XAI", "SEC EDGAR", "Finance", "Sentiment Analysis"],
+    liveUrl: null,
+    githubUrl: "https://github.com/nishantnayar/Earnings-Sentiment",
+    imageUrl: null,
+    featured: true,
+  },
+  {
+    title: "Titanic XAI: Counterfactual Explanations Under Regulatory Scrutiny",
+    description:
+      "Most explainability work stops at feature importance. This project goes further — stress-testing six counterfactual explanation methods against three real regulatory frameworks (GDPR Article 22, CFPB 2022-03, EU AI Act) to find which techniques actually survive a compliance audit.",
+    bullets: [
+      "Six counterfactual methods evaluated: NICE, DiCE, OCEAN, Feature Tweaking, and more",
+      "Automated compliance scoring across validity, proximity, sparsity, actionability, and diversity",
+      "Interactive Streamlit app with SHAP explanations, compliance narratives, and audit-ready reports",
+    ],
+    problem: "Providing 'Your loan was denied — here's why and what to change' is a legal obligation under GDPR and CFPB frameworks, but most XAI tools aren't built with compliance in mind.",
+    solution: "A production-grade audit framework that benchmarks six counterfactual methods against regulatory requirements, scoring each on six compliance dimensions with an interactive Streamlit UI.",
+    status: "Live",
+    tags: ["Python", "XAI", "SHAP", "DiCE-ML", "Streamlit", "GDPR", "Regulatory Compliance", "Counterfactual Explanations"],
+    liveUrl: null,
+    githubUrl: "https://github.com/nishantnayar/Titanic",
     imageUrl: null,
     featured: true,
   },
@@ -81,24 +118,6 @@ export const projects: Project[] = [
     tags: ["Python", "RAG", "LangChain", "FAISS", "OpenAI", "Streamlit", "Generative AI"],
     liveUrl: null,
     githubUrl: null,
-    imageUrl: null,
-    featured: true,
-  },
-  {
-    title: "Earnings Call Sentiment → Stock Movement Predictor",
-    description:
-      "A buy-side analyst can now quantify what they were already doing intuitively — reading between the lines of management language. This project pulls earnings call transcripts from SEC EDGAR, applies NLP to extract sentiment signals, then builds a model predicting 5-day post-earnings price direction.",
-    bullets: [
-      "Extracts sentiment, tone, and uncertainty signals from SEC EDGAR transcripts",
-      "Predicts 5-day post-earnings price direction with an XAI layer",
-      "SHAP surfaces which phrases — 'headwinds', 'record quarter' — drove the signal",
-    ],
-    problem: "Buy-side analysts read tone and language intuitively during earnings calls — but can't quantify it.",
-    solution: "NLP extracts sentiment signals from EDGAR transcripts; SHAP shows which phrases moved the needle.",
-    status: "Live",
-    tags: ["Python", "NLP", "SHAP / XAI", "SEC EDGAR", "Finance", "Sentiment Analysis"],
-    liveUrl: null,
-    githubUrl: "https://github.com/nishantnayar/Earnings-Sentiment",
     imageUrl: null,
     featured: true,
   },
