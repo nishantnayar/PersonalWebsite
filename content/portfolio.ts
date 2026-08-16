@@ -32,6 +32,42 @@ export type Project = {
 // Order: Live → Building now → Up next
 export const projects: Project[] = [
   {
+    title: "shap-editorial: Publication-Ready SHAP Charts",
+    description:
+      "SHAP tells you why a model made a prediction, then draws it in a chart only the person who ran the explainer can read. This package is a one-line styling layer that turns a shap.Explanation into an editorial-quality chart with a plain-language title, a written takeaway, and axis cues that say which way the prediction moves.",
+    bullets: [
+      "Four chart types (beeswarm, waterfall, bar, scatter) sharing one editorial theme",
+      "Auto-generated takeaway line on every chart, with the top driver highlighted",
+      "Published on PyPI under MIT, with no hard dependency on shap itself",
+    ],
+    problem: "I presented a correct SHAP summary plot and someone asked whether blue was good or bad. Nothing in the chart answered it, and I had never once shown that chart without narrating it myself.",
+    solution: "A drop-in styling layer over shap.Explanation objects. One call returns a matplotlib (fig, ax) with a plain-language title, a written takeaway, and directional axis labels, so the chart explains itself to a room that never saw the notebook.",
+    status: "Live",
+    tags: ["Python", "SHAP / XAI", "matplotlib", "Data Visualization", "Open Source", "PyPI"],
+    liveUrl: "https://pypi.org/project/shap-editorial/",
+    githubUrl: "https://github.com/nishantnayar/shap-editorial",
+    imageUrl: null,
+    featured: true,
+  },
+  {
+    title: "Titanic XAI: Counterfactual Explanations Under Regulatory Scrutiny",
+    description:
+      "Most explainability work stops at feature importance. This project goes further — stress-testing six counterfactual explanation methods against three real regulatory frameworks (GDPR Article 22, CFPB 2022-03, EU AI Act) to find which techniques actually survive a compliance audit.",
+    bullets: [
+      "Six counterfactual methods evaluated: NICE, DiCE, OCEAN, Feature Tweaking, and more",
+      "Automated compliance scoring across validity, proximity, sparsity, actionability, and diversity",
+      "Interactive Streamlit app with SHAP explanations, compliance narratives, and audit-ready reports",
+    ],
+    problem: "Providing 'Your loan was denied — here's why and what to change' is a legal obligation under GDPR and CFPB frameworks, but most XAI tools aren't built with compliance in mind.",
+    solution: "A production-grade audit framework that benchmarks six counterfactual methods against regulatory requirements, scoring each on six compliance dimensions with an interactive Streamlit UI.",
+    status: "Live",
+    tags: ["Python", "XAI", "SHAP", "DiCE-ML", "Streamlit", "GDPR", "Regulatory Compliance", "Counterfactual Explanations"],
+    liveUrl: null,
+    githubUrl: "https://github.com/nishantnayar/Titanic",
+    imageUrl: null,
+    featured: true,
+  },
+  {
     title: "Robinhood Portfolio Tracker",
     description:
       "Robinhood's UI is built for execution, not long-horizon analysis. This local-first pipeline syncs your positions, orders, dividends, and price history into PostgreSQL — then surfaces P&L, risk metrics, and a Streamlit dashboard you actually own.",
@@ -68,24 +104,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Titanic XAI: Counterfactual Explanations Under Regulatory Scrutiny",
-    description:
-      "Most explainability work stops at feature importance. This project goes further — stress-testing six counterfactual explanation methods against three real regulatory frameworks (GDPR Article 22, CFPB 2022-03, EU AI Act) to find which techniques actually survive a compliance audit.",
-    bullets: [
-      "Six counterfactual methods evaluated: NICE, DiCE, OCEAN, Feature Tweaking, and more",
-      "Automated compliance scoring across validity, proximity, sparsity, actionability, and diversity",
-      "Interactive Streamlit app with SHAP explanations, compliance narratives, and audit-ready reports",
-    ],
-    problem: "Providing 'Your loan was denied — here's why and what to change' is a legal obligation under GDPR and CFPB frameworks, but most XAI tools aren't built with compliance in mind.",
-    solution: "A production-grade audit framework that benchmarks six counterfactual methods against regulatory requirements, scoring each on six compliance dimensions with an interactive Streamlit UI.",
-    status: "Live",
-    tags: ["Python", "XAI", "SHAP", "DiCE-ML", "Streamlit", "GDPR", "Regulatory Compliance", "Counterfactual Explanations"],
-    liveUrl: null,
-    githubUrl: "https://github.com/nishantnayar/Titanic",
-    imageUrl: null,
-    featured: true,
-  },
-  {
     title: "Credit Risk Model with Explainable Rejections",
     description:
       "Regulators require banks to explain every credit decision. This project builds a default-prediction classifier on the Lending Club dataset, then wraps it with a SHAP explanation layer that produces plain-language rejection reasons — mirroring SR 11-7 model risk management requirements.",
@@ -96,7 +114,7 @@ export const projects: Project[] = [
     ],
     problem: "Regulators require banks to explain every credit decision — most black-box models can't.",
     solution: "A SHAP explanation layer generates ranked, plain-language rejection reasons aligned to SR 11-7.",
-    status: "Building now — ships April 2026",
+    status: "Building now",
     tags: ["Python", "Classification", "SHAP", "LIME", "Credit Risk", "Regulatory / SR 11-7"],
     liveUrl: null,
     githubUrl: null,
@@ -114,7 +132,7 @@ export const projects: Project[] = [
     ],
     problem: "Analysts spend 4+ hours reading a single 10-K filing to extract a handful of key passages.",
     solution: "A RAG system ingests filings and answers natural language questions with cited source passages in minutes.",
-    status: "Building now — ships April 2026",
+    status: "Building now",
     tags: ["Python", "RAG", "LangChain", "FAISS", "OpenAI", "Streamlit", "Generative AI"],
     liveUrl: null,
     githubUrl: null,

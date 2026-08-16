@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Lora, DM_Sans, Playfair_Display, DM_Mono } from "next/font/google";
+import { Lora, DM_Sans, Playfair_Display, DM_Mono, Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ChromeGate from "@/components/ChromeGate";
 import { profile } from "@/content/profile";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -36,6 +37,21 @@ const dmMono = DM_Mono({
   weight: ["400", "500"],
 });
 
+// Industry design-system fonts — used by the redesigned homepage.
+const barlow = Barlow({
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  display: "swap",
+  weight: ["400", "500", "700"],
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+  weight: ["400", "600"],
+});
+
 const ogImages = profile.ogImage
   ? [{ url: profile.ogImage, width: 1200, height: 630, alt: profile.name }]
   : [];
@@ -66,11 +82,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${dmSans.variable} ${playfair.variable} ${dmMono.variable}`}>
-      <body className="bg-paper text-ink font-sans font-light antialiased">
-        <Nav />
+    <html lang="en" className={`${lora.variable} ${dmSans.variable} ${playfair.variable} ${dmMono.variable} ${barlow.variable} ${barlowCondensed.variable}`}>
+      <body className="text-ink font-sans font-light antialiased">
+        <ChromeGate>
+          <Nav />
+        </ChromeGate>
         <main>{children}</main>
-        <Footer />
+        <ChromeGate>
+          <Footer />
+        </ChromeGate>
         <Analytics />
       </body>
     </html>

@@ -2,48 +2,44 @@ import { profile } from "@/content/profile";
 
 export default function Footer() {
   const { name, social } = profile;
-  const year = new Date().getFullYear();
+
+  const links = [
+    { href: social.linkedin, label: "LinkedIn" },
+    { href: social.github, label: "GitHub" },
+    { href: (social as Record<string, string | null>).medium ?? null, label: "Medium" },
+  ].filter((l): l is { href: string; label: string } => Boolean(l.href));
 
   return (
-    <footer className="border-t border-ink/10 mt-24">
-      <div className="max-w-[680px] mx-auto px-8 py-8 flex flex-wrap justify-between items-center gap-4">
-        <p className="text-[12px] text-ink-light">
-          {name} · Chicago
-        </p>
-        <div className="flex gap-5">
-          {social.linkedin && (
+    <div className="ind-nav">
+      <footer
+        style={{
+          maxWidth: 1080,
+          margin: "0 auto",
+          padding: "24px 32px",
+          borderTop: "1px solid var(--ind-divider)",
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 12,
+          fontSize: 13,
+          color: "color-mix(in srgb, var(--ind-text) 70%, transparent)",
+        }}
+      >
+        <span>{name} · Chicago</span>
+        <span style={{ display: "flex", gap: 16 }}>
+          {links.map(({ href, label }) => (
             <a
-              href={social.linkedin}
+              key={label}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] text-ink-light hover:text-ink transition-colors"
+              style={{ color: "var(--color-accent-700)" }}
             >
-              LinkedIn
+              {label}
             </a>
-          )}
-          {social.github && (
-            <a
-              href={social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[12px] text-ink-light hover:text-ink transition-colors"
-            >
-              GitHub
-            </a>
-          )}
-          {(social as Record<string, string | null>).medium && (
-            <a
-              href={(social as Record<string, string | null>).medium!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[12px] text-ink-light hover:text-ink transition-colors"
-            >
-              Medium
-            </a>
-          )}
-          <p className="text-[12px] text-ink-light">© {year}</p>
-        </div>
-      </div>
-    </footer>
+          ))}
+        </span>
+      </footer>
+    </div>
   );
 }

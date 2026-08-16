@@ -93,6 +93,36 @@ Outside of work, he mentors early-career professionals navigating the same cross
     // Add more as needed: dribbble, youtube, etc.
   },
 
+  // --- Featured LinkedIn posts (Writing section on the homepage) ---
+  // Order here is the order shown on the page. Set to [] to hide the cards.
+  //   label - small uppercase line above the headline (e.g. "Latest · August 2026")
+  //   title - the post's hook, shown in serif
+  //   blurb - one or two sentences of supporting context
+  //   url   - permalink to the post on LinkedIn
+  linkedInPosts: [
+    {
+      label: "Latest · August 2026",
+      title: "Your SHAP plot is correct and unreadable.",
+      blurb:
+        "The chart was right. Someone in the room still asked whether blue was good or bad, and nothing in the plot answered it. So I built the package that does.",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7492919549005307905/",
+    },
+    {
+      label: "Most read · March 2026",
+      title: "Most people in data science came from computer science. I came from finance.",
+      blurb:
+        "That difference changed everything about how I approach a problem — and why I ended up doing work most data scientists never touch.",
+      url: "https://www.linkedin.com/posts/activity-7442903183473065985-561u",
+    },
+    {
+      label: "April 2026",
+      title: "What is the actual question you are trying to answer?",
+      blurb:
+        "Most data projects fail before the first line of code. Not because of the model. Because nobody stopped to agree on the question.",
+      url: "https://www.linkedin.com/posts/activity-7444715132573880321-Up-M",
+    },
+  ],
+
   // --- Work Experience (for future Experience section) ---
   experience: [
     {
