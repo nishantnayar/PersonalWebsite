@@ -45,7 +45,7 @@ const pillars = [
 const headingFont: CSSProperties = { fontFamily: "var(--font-heading)", fontWeight: 600 };
 
 export default function HomePage() {
-  const { name, title, location, avatarUrl, stats, skills, social, linkedInPosts } = profile;
+  const { name, title, location, avatarUrl, stats, skills, social, linkedInPosts, currently, education } = profile;
 
   const footerLinks = [
     { href: social.github, label: "GitHub" },
@@ -208,6 +208,51 @@ export default function HomePage() {
         <p style={{ fontSize: 15.5, lineHeight: 1.6, margin: "0 0 36px" }}>
           My job at JPMorgan Chase is to take complex technical programs and make them land — translating between engineers, data scientists, and the people who sign off on the work. I write about what I keep seeing in that space.
         </p>
+
+        {currently && (
+          <>
+            <span style={{ display: "block", fontSize: 13, letterSpacing: ".08em", textTransform: "uppercase", fontWeight: 600, color: "var(--color-accent-700)", margin: "0 0 14px" }}>
+              Now
+            </span>
+            <p style={{ fontSize: 15, lineHeight: 1.6, margin: "0 0 36px", color: "color-mix(in srgb, var(--color-text) 82%, transparent)" }}>
+              {currently}
+            </p>
+          </>
+        )}
+
+        {education.length > 0 && (
+          <>
+            <span style={{ display: "block", fontSize: 13, letterSpacing: ".08em", textTransform: "uppercase", fontWeight: 600, color: "var(--color-accent-700)", margin: "0 0 14px" }}>
+              Education
+            </span>
+            <div style={{ display: "flex", flexDirection: "column", marginBottom: 40 }}>
+              {education.map((edu, i) => (
+                <div
+                  key={edu.degree}
+                  style={{
+                    display: "flex",
+                    gap: 20,
+                    alignItems: "center",
+                    padding: "16px 0",
+                    borderBottom: i < education.length - 1 ? "1px solid var(--color-divider)" : undefined,
+                  }}
+                >
+                  {edu.logoUrl ? (
+                    <Image src={edu.logoUrl} alt={edu.institution} width={56} height={56} style={{ flex: "none", objectFit: "contain" }} />
+                  ) : (
+                    <div style={{ ...headingFont, width: 56, height: 56, flex: "none", display: "grid", placeItems: "center", background: edu.color, color: "#fff", fontSize: 15 }}>
+                      {edu.abbreviation}
+                    </div>
+                  )}
+                  <div>
+                    <div style={{ ...headingFont, fontSize: 18, textTransform: "uppercase" }}>{edu.degree}</div>
+                    <div style={{ fontSize: 14, color: "color-mix(in srgb, var(--color-text) 78%, transparent)", marginTop: 2 }}>{edu.institution}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
         <span style={{ display: "block", fontSize: 13, letterSpacing: ".08em", textTransform: "uppercase", fontWeight: 600, color: "var(--color-accent-700)", margin: "0 0 14px" }}>
           What I write about

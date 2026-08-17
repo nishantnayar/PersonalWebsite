@@ -1,123 +1,94 @@
-# Personal Website
+# Nishant Nayar
 
-A clean, minimal personal branding website built with **Next.js 14** and **Tailwind CSS**. Includes an About page, Portfolio, and Blog. Ready to deploy to Vercel in minutes.
+Personal site for a Lead Solutions Analyst at JPMorgan Chase who came to data science from finance, not computer science. Writing, projects, and chart craft at the intersection of data, technology, and business.
 
----
+**Live:** [nishantnayar.dev](https://nishantnayar.dev)
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000)](https://vercel.com/)
 
-### 1. Install dependencies
+## Pages
+
+| Route | What it is |
+|---|---|
+| `/` | Homepage: bio, three writing pillars, LinkedIn posts, CTA |
+| `/blog` | Writing feed. Cards pull from `linkedInPosts` in `content/profile.ts` |
+| `/portfolio` | Project cards from `content/portfolio.ts` |
+| `/visualizations` | Storytelling with Data chart makeovers from `content/visualizations.ts` |
+
+## Stack
+
+Next.js 16 (App Router), React 18, TypeScript, Tailwind CSS 3, `@vercel/analytics`. Deployed on Vercel. Auto-deploys on every push to `main`.
+
+## Local development
 
 ```bash
 npm install
-```
-
-### 2. Run the dev server
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your site.
+Open [http://localhost:3000](http://localhost:3000).
 
----
-
-## How to Update Your Content
-
-You don't need to touch any complex code. All content lives in easy-to-edit files:
-
-### Personal Info & Bio → `content/profile.ts`
-
-Edit this file to update:
-- Your name, title, and tagline
-- Bio paragraphs
-- Location
-- Skills list
-- Social media links
-- Profile photo (see instructions in the file)
-
-### Portfolio Projects → `content/portfolio.ts`
-
-Each project is an object in the array. Copy/paste an existing entry to add a new one. Fields:
-- `title` — Project name
-- `description` — 1–2 sentence summary
-- `tags` — Tech stack badges
-- `liveUrl` — Link to live site (or `null`)
-- `githubUrl` — Link to repo (or `null`)
-- `imageUrl` — Screenshot path under `/public/images/` (or `null` for placeholder)
-- `featured` — Set to `true` to display it larger at the top
-
-### Blog Posts → `content/blog/`
-
-Each post is a **Markdown** (`.md`) file. To add a new post:
-
-1. Create a new file: `content/blog/my-post-title.md`
-2. Add the frontmatter at the top:
-
-```markdown
----
-title: "Your Post Title"
-date: "2024-04-01"
-excerpt: "One sentence summary shown on the blog listing page."
-tags: ["Tag1", "Tag2"]
----
-
-Your content goes here. Standard Markdown is supported.
+```bash
+npm run build   # production build
+npm run lint    # ESLint
 ```
 
-3. The filename (without `.md`) becomes the URL slug: `/blog/my-post-title`
+## Updating content
 
-### Profile Photo
+Editable copy lives in `content/`. Do not hard-code personal data in components.
 
-Place your photo at `public/images/photo.jpg` and update `avatarUrl` in `content/profile.ts`:
+### Profile, bio, writing → `content/profile.ts`
 
-```ts
-avatarUrl: "/images/photo.jpg",
+Name, title, tagline, bio, stats, education, skills, social links, LinkedIn posts, SEO (`siteUrl`, `ogImage`). Fields are commented inline.
+
+**Profile photo:** put the file in `public/images/` and set `avatarUrl` (currently `/images/photo.jpg`).
+
+**Resume:** put a PDF in `public/` and set `resumeUrl`. Leave it `null` to hide the button.
+
+**LinkedIn posts:** add objects to `linkedInPosts`. Order in the array is the order on the page. Set the array to `[]` to hide the cards.
+
+### Projects → `content/portfolio.ts`
+
+Copy an existing entry in the `projects` array. Fields:
+
+- `title`, `description`, `bullets` (three one-liners on the card)
+- `problem`, `solution`
+- `status` — e.g. `"Live"`, `"Building now"`, `"Up next — Q3 2026"`
+- `tags`, `liveUrl`, `githubUrl`, `imageUrl` (path under `/public/images/`, or `null`)
+- `featured` — `true` for the larger card treatment
+
+### Visualizations → `content/visualizations.ts`
+
+Copy an existing entry. Newest first. Place the chart image in `public/images/` and set `imageUrl`. Optional: `challenge`, `sourceUrl`, `sourceLabel`, `date`.
+
+## Project structure
+
 ```
-
-### Resume / CV
-
-Place your PDF at `public/resume.pdf` and `resumeUrl` in `content/profile.ts` is already pointing to it. Set it to `null` to hide the button.
-
----
-
-## Project Structure
-
-```
-├── app/                  # Next.js App Router pages
-│   ├── page.tsx          # About / Home page
-│   ├── portfolio/
-│   │   └── page.tsx      # Portfolio page
-│   └── blog/
-│       ├── page.tsx      # Blog listing page
-│       └── [slug]/
-│           └── page.tsx  # Individual blog post
+├── app/
+│   ├── page.tsx              # Homepage (own sidebar + footer)
+│   ├── blog/page.tsx         # Writing
+│   ├── portfolio/page.tsx    # Projects
+│   └── visualizations/page.tsx
 ├── components/
-│   ├── Nav.tsx           # Navigation bar
-│   └── Footer.tsx        # Footer with social links
-├── content/              # ✏️  Edit these to update your site
-│   ├── profile.ts        # Your name, bio, skills, social links
-│   ├── portfolio.ts      # Your projects
-│   └── blog/             # Your blog posts (.md files)
-├── lib/
-│   └── blog.ts           # Blog post reading utilities
-└── public/               # Static assets (images, resume PDF)
+│   ├── Nav.tsx               # Top nav (hidden on homepage)
+│   ├── Footer.tsx            # Site footer (hidden on homepage)
+│   └── ChromeGate.tsx        # Suppresses Nav/Footer on `/`
+├── content/                  # Edit these to update the site
+│   ├── profile.ts
+│   ├── portfolio.ts
+│   └── visualizations.ts
+└── public/images/            # Photo, logos, chart images
 ```
 
----
+The homepage supplies its own chrome. `ChromeGate` hides the shared Nav and Footer on `/` so the two layouts do not stack.
 
-## Deploying to Vercel
+## Design
 
-1. Push this project to a GitHub repository
-2. Go to [vercel.com](https://vercel.com) and import the repository
-3. Vercel will auto-detect Next.js — click **Deploy**
+Homepage and inner pages use Barlow / Barlow Condensed with a navy accent (`#5980a6`). Tokens live on the homepage wrapper and in `app/globals.css` (`--ind-*` / `--color-*`). Tailwind tokens in `tailwind.config.ts` (forest `accent`, warm `paper`) remain available for older components.
 
-Your site will be live in under a minute. Every push to `main` triggers an automatic redeploy.
+## Deploy
 
----
-
-## Customising the Design
-
-- **Accent colour** — Change `accent` in `tailwind.config.ts`
-- **Font** — Change the `Inter` import in `app/layout.tsx` to any Google Font
-- **Navigation links** — Edit `navLinks` in `components/Nav.tsx`
+Pushes to `main` deploy automatically on Vercel. Domain is set in `profile.siteUrl` (`https://nishantnayar.dev`). Update that field if the domain changes.
