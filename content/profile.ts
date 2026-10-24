@@ -66,6 +66,42 @@ Outside of work, he mentors early-career professionals navigating the same cross
     },
   ],
 
+  // --- Certifications ---
+  // url: the public verification page for the credential (Credly: https://www.credly.com/badges/<badge-id>)
+  // imageUrl: a square badge image; for Credly, right-click the badge on its page > "Copy image address".
+  //           Local images go in /public/images/ (e.g. "/images/cornell-seal.png")
+  // expired: set to true to show an "Expired" label on the card
+  certifications: [
+    {
+      name: "Agentic AI Architecture",
+      issuer: "Cornell University (eCornell)",
+      url: "https://mycredentials.ecornell.cornell.edu/credential/uYujugMGYp",
+      imageUrl: "/images/cornell-seal.png",
+      expired: false,
+    },
+    {
+      name: "AWS Certified AI Practitioner",
+      issuer: "Amazon Web Services",
+      url: "https://www.credly.com/badges/203b14c5-4f7c-4e52-90ac-64c48d82e320",
+      imageUrl: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png",
+      expired: false,
+    },
+    {
+      name: "Semantic Search with LLMs",
+      issuer: "O'Reilly Media",
+      url: "https://www.credly.com/badges/c1f0d430-e3bb-4cb9-8237-81e8b9122b8a",
+      imageUrl: "https://images.credly.com/images/c79e5b46-712e-4d99-b1b0-4e696750ae93/1204d13e-5982-4255-bc3b-243dd636c3d6.png",
+      expired: false,
+    },
+    {
+      name: "AWS Certified Cloud Practitioner",
+      issuer: "Amazon Web Services",
+      url: "https://www.credly.com/badges/2785b882-3340-4f5d-9914-193dcc9351c2",
+      imageUrl: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+      expired: true,
+    },
+  ],
+
   // --- Skills (shown as tags on About page) ---
   skills: [
     "Python",

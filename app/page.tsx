@@ -45,7 +45,7 @@ const pillars = [
 const headingFont: CSSProperties = { fontFamily: "var(--font-heading)", fontWeight: 600 };
 
 export default function HomePage() {
-  const { name, title, location, avatarUrl, stats, skills, social, linkedInPosts, currently, education } = profile;
+  const { name, title, location, avatarUrl, stats, skills, social, linkedInPosts, currently, education, certifications } = profile;
 
   const footerLinks = [
     { href: social.github, label: "GitHub" },
@@ -249,6 +249,32 @@ export default function HomePage() {
                     <div style={{ fontSize: 14, color: "color-mix(in srgb, var(--color-text) 78%, transparent)", marginTop: 2 }}>{edu.institution}</div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {certifications.length > 0 && (
+          <>
+            <span style={{ display: "block", fontSize: 13, letterSpacing: ".08em", textTransform: "uppercase", fontWeight: 600, color: "var(--color-accent-700)", margin: "0 0 14px" }}>
+              Certifications
+            </span>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 20, marginBottom: 40 }}>
+              {certifications.map((cert) => (
+                <a
+                  key={cert.url}
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "20px 14px", border: "1px solid var(--color-divider)", color: "inherit", textDecoration: "none" }}
+                >
+                  <Image src={cert.imageUrl} alt={cert.name} width={96} height={96} style={{ width: 96, height: 96, objectFit: "contain", flex: "none" }} />
+                  <div style={{ ...headingFont, fontSize: 15, textTransform: "uppercase", lineHeight: 1.25, marginTop: 14 }}>{cert.name}</div>
+                  <div style={{ fontSize: 13, color: "color-mix(in srgb, var(--color-text) 78%, transparent)", marginTop: 4 }}>{cert.issuer}</div>
+                  {cert.expired && (
+                    <div style={{ fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: "color-mix(in srgb, var(--color-text) 60%, transparent)", marginTop: 6 }}>Expired</div>
+                  )}
+                </a>
               ))}
             </div>
           </>
